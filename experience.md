@@ -45,13 +45,13 @@ The matrix below maps Kumaran Parvatham's core executive capabilities against co
   - **New Products & Ecosystem Building:** Developed and commercialised SwinkPay as a mobile/QR-led merchant-acceptance proposition supporting Visa, Mastercard, and RuPay; expanded the portfolio with multi-currency prepaid plus clearing and settlement capabilities.
   - **Market-Entry Execution:** Translated client, scheme, regulatory, and operating requirements into localisation, certification, partner integration, and go-live readiness; secured Mastercard Third Party Processor certification and established a US processing footprint.
 
-## Founder & Director - Zero-to-One Payments Product
-- **Company:** YiPay Payments Venture (Concurrent)
-- **Dates:** 2015 – 2017 (Bootstrapped | India)
+## Founder & Director — Zero-to-One Payments Product
+- **Company:** YiPay Payments Venture (Bootstrapped | India)
+- **Dates:** 2015 – 2017
 - **Core Focus:** Interoperable Account-to-Account Consumer & Merchant Payment Propositions.
 - **Key Achievements:**
-  - Conceived an interoperable account-to-account payment proposition using linked bank accounts; led product vision, MVP development, commercial evaluation, bank demonstrations, and partnerships with a three-person team.
-  - Designed interoperable transaction-routing logic and filed a provisional patent application, testing technical and commercial viability before real-time account-based payments became mainstream in India.
+  - Bootstrapped an interoperable account-to-account payment platform using linked bank networks, proving product-market viability before real-time account payments went mainstream in India.
+  - Designed complex interoperable transaction-routing logic and filed a provisional patent application, managing a lean team of three to build the functional MVP, execute corporate bank demonstrations, and structure commercial partner integrations.
 
 ## Earlier Leadership Career - Transformation, Delivery, Quality & Regional Capability
 - **Companies:** Quinnox | Verinite | HSBC GLT | Cognizant | Capgemini | Thinksoft | CitiFinancial | Fluidline
