@@ -21,29 +21,30 @@ if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your .env configuration file.")
     st.stop()
 
-# Ensure the data directory exists and is visible to the interpreter path
+# Set current directory path (since documents are at the root of the repository)
 DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
-if not os.path.exists(DATA_DIR):
-    st.error(f"Critical Error: Data folder not found at path: {DATA_DIR}. Please check your directories.")
-    st.stop()
 
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
-from langchain.chains.retrieval import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+
+# Function to format retrieved context documents cleanly
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
 
 # Cache the RAG initialization logic with an interactive loader notification
 @st.cache_resource
 def initialize_rag_pipeline(data_path):
-    # 1. Load data explicitly using the native, lightweight TextLoader class
-    loader = DirectoryLoader(data_path, glob="**/*.md", loader_cls=TextLoader)
+    # 1. Load your root Markdown data assets using the native TextLoader
+    loader = DirectoryLoader(data_path, glob="*.md", loader_cls=TextLoader)
     docs = loader.load()
     
     if not docs:
-        raise ValueError(f"No profile documents (.md files) found inside the {data_path} target folder.")
+        raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
     
     # 2. Chunk text logically
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
@@ -80,8 +81,15 @@ def initialize_rag_pipeline(data_path):
         ("human", "{input}"),
     ])
     
-    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-    return create_retrieval_chain(retriever, combine_docs_chain)
+    # 6. Modern, Stable LCEL Data Pipeline Routing Chain (Bypasses langchain.chains entirely)
+    rag_chain = (
+        {"context": retriever | format_docs, "input": RunnablePassthrough()}
+        | prompt
+        | llm
+        | StrOutputParser()
+    )
+    
+    return rag_chain
 
 # Initialize pipeline with standard UI handling
 try:
@@ -108,8 +116,8 @@ if recruiter_query := st.chat_input("Ask me about Kumaran's portfolio scales, te
     
     with st.chat_message("assistant"):
         with st.spinner("Analyzing executive dossier..."):
-            response = agent_engine.invoke({"input": recruiter_query})
-            answer = response["answer"]
+            # Execute modern LCEL pipeline via simple standard invocation
+            answer = agent_engine.invoke(recruiter_query)
             st.markdown(answer)
             
     st.session_state.messages.append({"role": "assistant", "content": answer})
