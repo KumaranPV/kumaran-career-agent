@@ -22,7 +22,7 @@ if not os.getenv("OPENAI_API_KEY"):
     st.stop()
 
 # Ensure the data directory exists and is visible to the interpreter path
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "profile_data"))
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
 if not os.path.exists(DATA_DIR):
     st.error(f"Critical Error: Data folder not found at path: {DATA_DIR}. Please check your directories.")
     st.stop()
