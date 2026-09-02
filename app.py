@@ -32,7 +32,6 @@ CRITICAL STRUCTURAL SECTIONS TO GENERATE:
 Context Dossier:
 {context}"""
 
-
 SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
 Answer the user's question using ONLY the provided context dossier below.
 
@@ -63,26 +62,17 @@ Context Dossier:
 {context}"""
 
 # ==============================================================================
-# UI HEADER LAYOUT
+# ENVIRONMENT LOADING
 # ==============================================================================
-st.title("💼 Kumaran Parvatham")
-st.subheader("AI Executive Talent Agent")
-st.write(
-    "Welcome! I am Kumaran's autonomous career agent. You can ask me questions about his "
-    "24+ years of experience across Banking, Fintech, Payments, Enterprise Transformation, "
-    "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
-)
-
-# Load secrets
 load_dotenv()
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your .env configuration file.")
     st.stop()
 
-DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
+# Point cleanly to the exact root directory where your .md files live
+DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
@@ -93,16 +83,24 @@ def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
 @st.cache_resource
-def initialize_rag_pipeline(data_path):
-    loader = DirectoryLoader(data_path, glob="[bepf]*.md", loader_cls=TextLoader)
-    docs = loader.load()
-    if not docs:
-        raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
-    chunks = docs 
+def initialize_rag_pipeline(path_to_data):
+    # Standardised explicit list loading to ensure error-free cloud mounting
+    all_loaded_docs = []
+    target_files = ["bio.md", "experience.md", "projects.md", "faq.md"]
+    
+    for filename in target_files:
+        full_file_path = os.path.join(path_to_data, filename)
+        if os.path.exists(full_file_path):
+            file_loader = TextLoader(full_file_path, encoding="utf-8")
+            all_loaded_docs.extend(file_loader.load())
+            
+    if not all_loaded_docs:
+        raise ValueError("Critical Error: Profile dossier markdown assets could not be located at repository root.")
+        
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-    vectorstore = FAISS.from_documents(chunks, embeddings)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1) 
-    return retriever, llm
+    vectorstore = FAISS.from_documents(all_loaded_docs, embeddings)
+    return vectorstore.as_retriever(search_kwargs={"k": 4})
 
-# Global initialization block - completely flat, zero-indentation loop
+# Initialize the secure data retriever engine natively
+retriever = initialize_rag_pipeline(DATA_DIR)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
