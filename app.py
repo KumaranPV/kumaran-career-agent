@@ -3,17 +3,16 @@ import os
 from dotenv import load_dotenv
 
 # ==============================================================================
-# 1. CORE PAGE CONFIGURATION (CRITICAL: MUST BE FIRST STREAMLIT DIRECTIVE)
+# 1. PAGE CONFIGURATION & ROOT STRUCTURAL SETUP
 # ==============================================================================
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
-# Load environment variables
+# Load environment configurations
 load_dotenv()
 
 # ==============================================================================
-# 2. GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS
+# 2. GLOBAL STORAGE: SYSTEM PROMPT CONSTANTS
 # ==============================================================================
-
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
 Analyze the pasted Job Description against Kumaran's context dossier below.
 You must calculate and output an exact structured scorecard based strictly on the following guidelines:
@@ -77,12 +76,10 @@ st.write(
     "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
 )
 
+# Airtight exception checking for core API configurations
 if not os.getenv("OPENAI_API_KEY"):
-    st.error("Missing OpenAI API Key! Please verify your .env configuration file or Streamlit Cloud Secrets setting.")
+    st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
     st.stop()
-
-# Point to directory path
-DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
@@ -94,15 +91,19 @@ from langchain_core.output_parsers import StrOutputParser
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
+# ==============================================================================
+# 4. ADAPTIVE FILE SCANNING AND EMBEDDING LOADER
+# ==============================================================================
 @st.cache_resource
-def initialize_rag_pipeline(path_to_data):
+def initialize_rag_pipeline():
     all_loaded_docs = []
+    target_files = ["bio.md", "experience.md", "projects.md", "faq.md"]
     
-    # 100% Linear file parsing - eliminates nested loops and loop indentation risks entirely
-    bio_path = os.path.join(path_to_data, "bio.md")
-    if os.path.exists(bio_path):
-        all_loaded_docs.extend(TextLoader(bio_path, encoding="utf-8").load())
-        
-    exp_path = os.path.join(path_to_data, "experience.md")
-    if os.path.exists(exp_path):
-        all_loaded_docs.extend(TextLoader(exp_path, encoding="utf-8").load())
+    # Adaptive environment cross-referencing layout bounds
+    possible_paths = [
+        os.getcwd(),
+        os.path.dirname(os.path.abspath(__file__)),
+        "/mount/src/kumaran-career-agent"
+    ]
+    
+    found_dir = None
