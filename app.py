@@ -35,20 +35,19 @@ def format_docs(docs):
 
 @st.cache_resource
 def initialize_rag_pipeline(data_path):
-    # Only loads bio.md, experience.md, projects.md, faq.md to prevent README contamination
     loader = DirectoryLoader(data_path, glob="[bepf]*.md", loader_cls=TextLoader)
     docs = loader.load()
     if not docs:
         raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
     
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     chunks = text_splitter.split_documents(docs)
     
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(chunks, embeddings)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
     
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0) # Temperature 0 forces strict copy-paste behavior
     return retriever, llm
 
 try:
@@ -57,7 +56,6 @@ except Exception as e:
     st.error(f"Pipeline Execution Error: {e}")
     st.stop()
 
-# Create a clean 2-column executive workspace layout
 col1, col2 = st.columns(2, gap="large")
 
 # --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
@@ -119,8 +117,15 @@ with col2:
         chat_prompt = ChatPromptTemplate.from_messages([
             ("system", (
                 "You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.\n"
-                "Answer the user's question using ONLY the provided context dossier below. Keep responses punchy and articulate.\n"
-                "At the end of your response, add a soft call-to-action mentioning his contact (Kumaran.alchemist@gmail.com | +91 96000 57231).\n\n"
+                "Answer the user's question using ONLY the provided context dossier below.\n\n"
+                "CRITICAL FORMATTING STYLE DIRECTIVE:\n"
+                "- If the user asks a broad summary question (e.g., 'Tell me about Kumaran', 'Who is Kumaran?', or requests an overview), "
+                "you MUST extract and output his explicit 'Executive Persona' framework verbatim from the context.\n"
+                "- Preserve the exact layout structure, bullet points, headers, and specific formatting lines "
+                "(such as 'Payments domain depth × Product/platform leadership × Enterprise transformation × Execution at scale').\n"
+                "- Do NOT paraphrase or re-write these core structured profile blocks into paragraphs.\n\n"
+                "At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email "
+                "(Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.\n\n"
                 "Context Dossier:\n{context}"
             )),
             ("human", "{input}")
