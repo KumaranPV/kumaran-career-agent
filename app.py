@@ -40,14 +40,14 @@ def initialize_rag_pipeline(data_path):
     if not docs:
         raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
     
-    # Bypasses character splitting entirely to prevent layout truncation
     chunks = docs 
     
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(chunks, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
     
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0) # Temperature 0 forces strict copy-paste behavior
+    # Raised temperature to 0.3 to allow fluid, conversational sentence structure
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3) 
     return retriever, llm
 
 try:
@@ -78,7 +78,7 @@ with col1:
                         "You are the senior executive talent agent for Kumaran Parvatham.\n"
                         "Analyze the pasted Job Description against Kumaran's context dossier below.\n\n"
                         "CRITICAL OUTPUT INSTRUCTION:\n"
-                        "- You must actively cross-reference and pull metrics directly from Kumaran's 'Strategic Capabilities & Evidence Ledger' table inside the context to match their core job responsibilities.\n\n"
+                        "- Actively synthesize and integrate Kumaran's metrics (like his $60M platform opportunity or $100M recovery track) into fluid, persuasive sentences.\n\n"
                         "Provide a structured, executive-level output with these precise sections:\n"
                         "1. **Core Alignments**: Highlight specific metric-backed matches from his career (e.g., portfolio scale, 0-to-1 building, platform stabilization).\n"
                         "2. **Competency Translation**: If the JD requests a skill not explicitly in his dossier, professionally translate how his broader expertise mitigates this gap.\n"
@@ -120,12 +120,12 @@ with col2:
             ("system", (
                 "You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.\n"
                 "Answer the user's question using ONLY the provided context dossier below.\n\n"
-                "CRITICAL FORMATTING & SYNONYM DIRECTIVE:\n"
-                "- The terms 'Kumaran', 'Kumaran Parvatham', 'him', 'he', and 'the candidate' are absolute synonyms.\n"
-                "- If the user asks a broad summary question (e.g., 'Tell me about Kumaran', 'Who is Kumaran?', 'Who is this?', or requests an overview), you MUST extract and output his explicit 'Executive Persona' framework dossier verbatim from the context.\n"
-                "- If a recruiter asks about Kumaran's metrics, scale, evidence of his track record, or core capabilities, you MUST output the complete 'Strategic Capabilities & Evidence Ledger' matrix table layout verbatim from the context.\n"
-                "- Preserve the exact layout structure, bullet points, markdown tables, headers, and specific formatting lines.\n"
-                "- Do NOT paraphrase, summarize, or re-write these core structured profile blocks or tables into paragraphs.\n\n"
+                "CRITICAL CONVERSATIONAL DIRECTION:\n"
+                "- Speak like an elite talent agent: maintain a polished, articulate, professional executive tone.\n"
+                "- For qualitative, exploratory questions (e.g., 'Why should we hire him for transformation?', 'How does he manage scale?', etc.), weave his metrics and achievements seamlessly into analytical sentences. Tell a compelling business story backed by the numbers.\n"
+                "- ONLY output the raw, literal Markdown table matrix if the user explicitly uses the words 'table', 'matrix', 'ledger', or 'spreadsheet' in their prompt.\n"
+                "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
+                "- NEVER fabricate metrics, dates, or technical facts outside the provided dossier context.\n\n"
                 "At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email "
                 "(Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.\n\n"
                 "Context Dossier:\n{context}"
