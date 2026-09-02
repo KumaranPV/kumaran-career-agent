@@ -105,5 +105,4 @@ def initialize_rag_pipeline(data_path):
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1) 
     return retriever, llm
 
-# Global initialisation block - completely clean layout
-try:
+# Global initialization block - completely flat, zero-indentation loop
