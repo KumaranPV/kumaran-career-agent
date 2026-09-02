@@ -80,6 +80,9 @@ if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
     st.stop()
 
+# Point cleanly to execution workspace
+DATA_DIR = os.path.dirname(os.path.abspath(__file__))
+
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
@@ -91,16 +94,14 @@ def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
 # ==============================================================================
-# 4. EXPLORATORY DOSSIER PARSING & ENGINE CACHING
+# 4. FLAT EXPLORATORY DOSSIER PARSING (ELIMINATES ALL LOOP COMPILING FRICITION)
 # ==============================================================================
 @st.cache_resource
-def initialize_rag_pipeline():
+def initialize_rag_pipeline(path_to_data):
     all_loaded_docs = []
-    target_files = ["bio.md", "experience.md", "projects.md", "faq.md"]
     
-    # Cycles safely through standard cloud pathway patterns
-    found_dir = "."
+    # Check current workspace root path defaults
+    target_dir = "."
     if os.path.exists("/mount/src/kumaran-career-agent/bio.md"):
-        found_dir = "/mount/src/kumaran-career-agent"
-        
-    for filename in target_files:
+        target_dir = "/mount/src/kumaran-career-agent"
+
