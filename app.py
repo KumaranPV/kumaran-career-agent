@@ -6,8 +6,33 @@ from dotenv import load_dotenv
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
 # ==============================================================================
-# GLOBAL CONFIGURATION: AIRTIGHT ADVERSARIAL SYSTEM PROMPT
+# GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS (BYPASSES SYNTAX CONFLICTS)
 # ==============================================================================
+
+SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
+Analyze the pasted Job Description against Kumaran's context dossier below.
+You must calculate and output an exact structured scorecard based strictly on the following guidelines:
+
+CRITICAL STRUCTURAL SECTIONS TO GENERATE:
+1. **Overall Fit Score**: Evaluate an explicit overall percentage (e.g., '91% — Strong Match') dynamically based on your analysis.
+2. **Full Matches**: Bullet points listing clear overlaps (e.g., Payments/issuer processing, Product & platform leadership, etc.).
+3. **Partial Matches**: Structural items needing slight verification (e.g., Full P&L ownership, specific local market experience, etc.).
+4. **Gaps / Risks**: Honest assessments (e.g., No current EU/US work rights if outside India, or specified limitations derived from the JD vs context).
+5. **Why the Score is X%**: Output a numerical breakdown mapping exactly to these categories:
+   - Domain fit — X/25
+   - Product leadership — X/25
+   - Technology/platform depth — X/20
+   - Commercial/P&L — X/15
+   - Geography/regulatory fit — X/10
+   - Work authorisation — X/10
+   - *Ensure the sum of these fields matches your total generated percentage perfectly.*
+6. **Recommendation**: Worth interviewing: YES/NO and a short 'Why' sentence stating if gaps are non-critical.
+7. **Recommended Interview Focus**: Provide 3-4 highly specific question bullet points to guide the hiring team during their first interview clip (e.g., Clarify depth of full P&L ownership, Validate architecture choice frameworks, etc.).
+
+Context Dossier:
+{context}"""
+
+
 SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
 Answer the user's question using ONLY the provided context dossier below.
 
@@ -86,29 +111,3 @@ def initialize_rag_pipeline(data_path):
 try:
     retriever, llm = initialize_rag_pipeline(DATA_DIR)
 except Exception as e:
-    st.error(f"Pipeline Execution Error: {e}")
-    st.stop()
-
-col1, col2 = st.columns(2, gap="large")
-
-# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
-with col1:
-    st.markdown("### 🎯 Option A: Match Your Job Description")
-    st.write("Paste your target JD below to get an instant, metric-backed gap analysis mapping Kumaran's career dossier directly to your requirements.")
-    
-    jd_input = st.text_area("Paste Job Description here:", height=300, placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
-    
-    if st.button("Analyze Role Fit ⚡️"):
-        if jd_input.strip() == "":
-            st.warning("Please paste a valid job description text to execute analysis.")
-        else:
-            with st.spinner("Executing structural alignment matrix..."):
-                relevant_docs = retriever.invoke(jd_input)
-                context_dossier = format_docs(relevant_docs)
-                
-                match_prompt = ChatPromptTemplate.from_messages([
-                    ("system", (
-                        "You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.\n"
-                        "Analyze the pasted Job Description against Kumaran's context dossier below.\n"
-                        "You must calculate and output an exact structured scorecard based strictly on the following guidelines:\n\n"
-                        "CRITICAL STRUCTURAL SECTIONS TO GENERATE:\n"
