@@ -2,11 +2,16 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 
-# Page configuration - MUST be the absolute first Streamlit command executed
+# ==============================================================================
+# 1. CORE PAGE CONFIGURATION (CRITICAL: MUST BE FIRST STREAMLIT DIRECTIVE)
+# ==============================================================================
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
+# Load environment variables
+load_dotenv()
+
 # ==============================================================================
-# GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS
+# 2. GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS
 # ==============================================================================
 
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
@@ -62,17 +67,24 @@ Context Dossier:
 {context}"""
 
 # ==============================================================================
-# ENVIRONMENT LOADING
+# 3. INTERFACE HEADER RENDERING
 # ==============================================================================
-load_dotenv()
+st.title("💼 Kumaran Parvatham")
+st.subheader("AI Executive Talent Agent")
+st.write(
+    "Welcome! I am Kumaran's autonomous career agent. You can ask me questions about his "
+    "24+ years of experience across Banking, Fintech, Payments, Enterprise Transformation, "
+    "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
+)
+
 if not os.getenv("OPENAI_API_KEY"):
-    st.error("Missing OpenAI API Key! Please verify your .env configuration file.")
+    st.error("Missing OpenAI API Key! Please verify your .env configuration file or Streamlit Cloud Secrets setting.")
     st.stop()
 
-# Point cleanly to the exact root directory where your .md files live
+# Point to directory path
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 
-from langchain_community.document_loaders import DirectoryLoader, TextLoader
+from langchain_community.document_loaders import TextLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
@@ -84,7 +96,6 @@ def format_docs(docs):
 
 @st.cache_resource
 def initialize_rag_pipeline(path_to_data):
-    # Standardised explicit list loading to ensure error-free cloud mounting
     all_loaded_docs = []
     target_files = ["bio.md", "experience.md", "projects.md", "faq.md"]
     
@@ -95,12 +106,3 @@ def initialize_rag_pipeline(path_to_data):
             all_loaded_docs.extend(file_loader.load())
             
     if not all_loaded_docs:
-        raise ValueError("Critical Error: Profile dossier markdown assets could not be located at repository root.")
-        
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-    vectorstore = FAISS.from_documents(all_loaded_docs, embeddings)
-    return vectorstore.as_retriever(search_kwargs={"k": 4})
-
-# Initialize the secure data retriever engine natively
-retriever = initialize_rag_pipeline(DATA_DIR)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
