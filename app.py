@@ -122,9 +122,12 @@ with col2:
                 "Answer the user's question using ONLY the provided context dossier below.\n\n"
                 "CRITICAL CONVERSATIONAL DIRECTION:\n"
                 "- Maintain a polished, articulate, professional executive tone.\n"
-                "- CHRONOLOGICAL DENSITY CONTROL: When answering exploratory questions about transformation, leadership, or metrics, limit your response to exactly 2 or 3 high-impact evidences maximum.\n"
-                "- Prioritize his most recent work chronologically: anchor answers in his current zero-to-one work (ACF Framework) and his platform scale achievements at Zeta (stabilizing the Tachyon platform, supporting a potential 20M-card migration path representing a ~$60M strategic opportunity). You can selectively weave in his earlier complex ~$100M core banking recovery as the third supporting point if highly relevant.\n"
-                "- Weave these 2-3 points fluidly into elegant sentences that tell a compelling business story, rather than dumping lists.\n"
+                "- CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact pieces of evidence maximum per answer.\n"
+                "- PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on his highest forms of zero-to-one product innovation:\n"
+                "  1) His current active work building the AI Core Financial Orchestration Platform for global cash visibility, FX rate optimisation, and dynamic payment rail routing across multiple banking systems to drive corporate liquidity.\n"
+                "  2) His experience bootstrapping an interoperable payments venture (YiPay), where he filed transaction-routing patents.\n"
+                "  3) His enterprise-scale leadership at Zeta stabilizing the $60M platform opportunity.\n"
+                "- Weave these points fluidly into elegant sentences that tell a compelling business story, rather than dumping lists.\n"
                 "- ONLY output the raw, literal Markdown table matrix if the user explicitly uses the words 'table', 'matrix', 'ledger', or 'spreadsheet' in their prompt.\n"
                 "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
                 "- NEVER fabricate metrics, dates, or technical facts outside the provided dossier context.\n\n"
@@ -134,6 +137,7 @@ with col2:
             )),
             ("human", "{input}")
         ])
+
         
         context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
