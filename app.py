@@ -46,7 +46,7 @@ def initialize_rag_pipeline(data_path):
     vectorstore = FAISS.from_documents(chunks, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
     
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3) 
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1) 
     return retriever, llm
 
 try:
@@ -123,12 +123,8 @@ with col2:
                 "CRITICAL CONVERSATIONAL DIRECTION:\n"
                 "- Maintain a polished, articulate, professional executive tone.\n"
                 "- CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact thematic pillars maximum per answer to ensure punchiness.\n"
-                "- PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on these 3 chronological pillars of evidence:\n"
-                "  1) His Current Active 0-to-1 AI Innovation Track: Synthesize BOTH his building of the Agent Certification Framework (ACF) for enterprise AI governance/risk architecture, AND his concurrent development of the AI Core Financial Orchestration Platform for multi-bank cash visibility, FX optimization, and dynamic payment rail routing.\n"
-                "  2) His Entrepreneurial Track: His experience bootstrapping an interoperable account-to-account payments venture (YiPay), where he designed transaction-routing logic and filed a provisional patent.\n"
-                "  3) His Enterprise Scale Track: His leadership tenure at Zeta stabilizing the Tachyon SaaS infrastructure platform, securing a potential 20M-card migration path representing a ~$60M strategic opportunity.\n"
-                "- Weave these points fluidly into elegant sentences that tell a compelling business story, rather than dumping lists.\n"
-                "- ONLY output the raw, literal Markdown table matrix if the user explicitly uses the words 'table', 'matrix', 'ledger', or 'spreadsheet' in their prompt.\n"
+                "- PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on his Current AI initiatives (ACF + Financial Orchestration), Entrepreneurial venture (YiPay), and Enterprise Scale track (Zeta).\n"
+                "- P&L / FINANCIAL OWNERSHIP DIRECTIVE: If a recruiter explicitly asks if Kumaran has handled a 'P&L', 'Profit and Loss', 'budget management', or has 'full P&L ownership', you MUST output this specific statement verbatim: 'Kumaran has significant commercial, portfolio, budget, pricing, vendor-economics and business-development exposure, but the dossier does not demonstrate long-term end-to-end ownership of a standalone business P&L comparable to a GM. This should be explored in an interview if full P&L accountability is essential.' Do not summarize or alter this message.\n"
                 "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
                 "- NEVER fabricate metrics, dates, or technical facts outside the provided dossier context.\n\n"
                 "At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email "
@@ -137,8 +133,6 @@ with col2:
             )),
             ("human", "{input}")
         ])
-
-
         
         context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
