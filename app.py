@@ -122,11 +122,11 @@ with col2:
                 "Answer the user's question using ONLY the provided context dossier below.\n\n"
                 "CRITICAL CONVERSATIONAL DIRECTION:\n"
                 "- Maintain a polished, articulate, professional executive tone.\n"
-                "- CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact pieces of evidence maximum per answer.\n"
-                "- PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on his highest forms of zero-to-one product innovation:\n"
-                "  1) His current active work building the AI Core Financial Orchestration Platform for global cash visibility, FX rate optimisation, and dynamic payment rail routing across multiple banking systems to drive corporate liquidity.\n"
-                "  2) His experience bootstrapping an interoperable payments venture (YiPay), where he filed transaction-routing patents.\n"
-                "  3) His enterprise-scale leadership at Zeta stabilizing the $60M platform opportunity.\n"
+                "- CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact thematic pillars maximum per answer to ensure punchiness.\n"
+                "- PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on these 3 chronological pillars of evidence:\n"
+                "  1) His Current Active 0-to-1 AI Innovation Track: Synthesize BOTH his building of the Agent Certification Framework (ACF) for enterprise AI governance/risk architecture, AND his concurrent development of the AI Core Financial Orchestration Platform for multi-bank cash visibility, FX optimization, and dynamic payment rail routing.\n"
+                "  2) His Entrepreneurial Track: His experience bootstrapping an interoperable account-to-account payments venture (YiPay), where he designed transaction-routing logic and filed a provisional patent.\n"
+                "  3) His Enterprise Scale Track: His leadership tenure at Zeta stabilizing the Tachyon SaaS infrastructure platform, securing a potential 20M-card migration path representing a ~$60M strategic opportunity.\n"
                 "- Weave these points fluidly into elegant sentences that tell a compelling business story, rather than dumping lists.\n"
                 "- ONLY output the raw, literal Markdown table matrix if the user explicitly uses the words 'table', 'matrix', 'ledger', or 'spreadsheet' in their prompt.\n"
                 "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
@@ -137,6 +137,7 @@ with col2:
             )),
             ("human", "{input}")
         ])
+
 
         
         context_docs = format_docs(retriever.invoke(recruiter_query))
