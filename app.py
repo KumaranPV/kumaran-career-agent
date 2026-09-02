@@ -35,7 +35,7 @@ def format_docs(docs):
 
 @st.cache_resource
 def initialize_rag_pipeline(data_path):
-    loader = DirectoryLoader(data_path, glob="*.md", loader_cls=TextLoader)
+   loader = DirectoryLoader(data_path, glob="[bepf]*.md", loader_cls=TextLoader)
     docs = loader.load()
     if not docs:
         raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
