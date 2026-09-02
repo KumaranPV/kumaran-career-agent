@@ -128,7 +128,7 @@ with col2:
             ("human", "{input}")
         ])
         
-        context_docs = format_docs(retriever.get_relevant_documents(recruiter_query))
+        context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
         
         with chat_container:
