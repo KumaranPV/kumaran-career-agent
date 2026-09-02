@@ -44,9 +44,8 @@ def initialize_rag_pipeline(data_path):
     
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(chunks, embeddings)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
     
-    # Raised temperature to 0.3 to allow fluid, conversational sentence structure
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3) 
     return retriever, llm
 
@@ -77,8 +76,9 @@ with col1:
                     ("system", (
                         "You are the senior executive talent agent for Kumaran Parvatham.\n"
                         "Analyze the pasted Job Description against Kumaran's context dossier below.\n\n"
-                        "CRITICAL OUTPUT INSTRUCTION:\n"
-                        "- Actively synthesize and integrate Kumaran's metrics (like his $60M platform opportunity or $100M recovery track) into fluid, persuasive sentences.\n\n"
+                        "CRITICAL OUTPUT INSTRUCTIONS:\n"
+                        "- Pull data chronologically, anchoring his fit using his recent work at Zeta (~$60M platform opportunity) and current 0-to-1 building (ACF).\n"
+                        "- Limit your output to exactly 2 to 3 high-impact, metric-backed alignments. Do not list his entire career history.\n\n"
                         "Provide a structured, executive-level output with these precise sections:\n"
                         "1. **Core Alignments**: Highlight specific metric-backed matches from his career (e.g., portfolio scale, 0-to-1 building, platform stabilization).\n"
                         "2. **Competency Translation**: If the JD requests a skill not explicitly in his dossier, professionally translate how his broader expertise mitigates this gap.\n"
@@ -121,8 +121,10 @@ with col2:
                 "You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.\n"
                 "Answer the user's question using ONLY the provided context dossier below.\n\n"
                 "CRITICAL CONVERSATIONAL DIRECTION:\n"
-                "- Speak like an elite talent agent: maintain a polished, articulate, professional executive tone.\n"
-                "- For qualitative, exploratory questions (e.g., 'Why should we hire him for transformation?', 'How does he manage scale?', etc.), weave his metrics and achievements seamlessly into analytical sentences. Tell a compelling business story backed by the numbers.\n"
+                "- Maintain a polished, articulate, professional executive tone.\n"
+                "- CHRONOLOGICAL DENSITY CONTROL: When answering exploratory questions about transformation, leadership, or metrics, limit your response to exactly 2 or 3 high-impact evidences maximum.\n"
+                "- Prioritize his most recent work chronologically: anchor answers in his current zero-to-one work (ACF Framework) and his platform scale achievements at Zeta (stabilizing the Tachyon platform, supporting a potential 20M-card migration path representing a ~$60M strategic opportunity). You can selectively weave in his earlier complex ~$100M core banking recovery as the third supporting point if highly relevant.\n"
+                "- Weave these 2-3 points fluidly into elegant sentences that tell a compelling business story, rather than dumping lists.\n"
                 "- ONLY output the raw, literal Markdown table matrix if the user explicitly uses the words 'table', 'matrix', 'ledger', or 'spreadsheet' in their prompt.\n"
                 "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
                 "- NEVER fabricate metrics, dates, or technical facts outside the provided dossier context.\n\n"
