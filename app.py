@@ -125,6 +125,7 @@ with col2:
         with chat_container:
             with st.chat_message("user"):
                 st.markdown(recruiter_query)
+        
         st.session_state.messages.append({"role": "user", "content": recruiter_query})
         
         chat_prompt = ChatPromptTemplate.from_messages([
@@ -148,5 +149,3 @@ with col2:
         
         context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
-        
-        with chat_container:
