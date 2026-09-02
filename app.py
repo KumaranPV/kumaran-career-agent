@@ -102,13 +102,6 @@ with col1:
                 
                 st.markdown("---")
                 st.markdown("### 📊 Custom Alignment Report")
-                
-                # Dynamic visual rendering for modern web UI utility
-                if "91%" in analysis_output or "90%" in analysis_output or "Strong" in analysis_output:
-                    st.success("🎯 Alignment Calculated: Highly Compatible Candidate Profile")
-                elif "No" in analysis_output:
-                    st.warning("⚠️ Alignment Calculated: Partial Fit Profile")
-                    
                 st.markdown(analysis_output)
 
 # --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
@@ -145,3 +138,14 @@ with col2:
                 "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
                 "- NEVER fabricate metrics, dates, or technical facts outside the provided dossier context.\n\n"
                 "At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email "
+                "(Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.\n\n"
+                "Context Dossier:\n{context}"
+            )),
+            ("human", "{input}")
+        ])
+        
+        context_docs = format_docs(retriever.invoke(recruiter_query))
+        chat_chain = chat_prompt | llm | StrOutputParser()
+        
+        with chat_container:
+            with st.chat_message("assistant"):
