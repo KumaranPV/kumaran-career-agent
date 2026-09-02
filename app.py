@@ -72,7 +72,7 @@ with col1:
         else:
             with st.spinner("Executing structural alignment matrix..."):
                 # Retrieve closest profile context based on the job description
-                relevant_docs = retriever.get_relevant_documents(jd_input)
+                relevant_docs = retriever.invoke(jd_input)
                 context_dossier = format_docs(relevant_docs)
                 
                 match_prompt = ChatPromptTemplate.from_messages([
