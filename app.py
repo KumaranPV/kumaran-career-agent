@@ -78,7 +78,6 @@ def format_docs(docs):
 def initialize_rag_pipeline(target_dir):
     all_loaded_docs = []
     
-    # Linear layout initialization - 100% space check verified [2]
     bio_f = os.path.join(target_dir, "bio.md")
     if os.path.exists(bio_f):
         all_loaded_docs.extend(TextLoader(bio_f, encoding="utf-8").load())
@@ -173,4 +172,5 @@ with col2:
         
         with chat_container:
             with st.chat_message("assistant"):
-                with st.spinner("Analyzing dossier..."):
+                answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
+                st.markdown(answer)
