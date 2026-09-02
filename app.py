@@ -74,18 +74,27 @@ with col1:
                 
                 match_prompt = ChatPromptTemplate.from_messages([
                     ("system", (
-                        "You are the senior executive talent agent for Kumaran Parvatham.\n"
-                        "Analyze the pasted Job Description against Kumaran's context dossier below.\n\n"
-                        "CRITICAL OUTPUT INSTRUCTIONS:\n"
-                        "- Pull data chronologically, anchoring his fit using his recent work at Zeta (~$60M platform opportunity) and current 0-to-1 building (ACF).\n"
-                        "- Limit your output to exactly 2 to 3 high-impact, metric-backed alignments. Do not list his entire career history.\n\n"
-                        "Provide a structured, executive-level output with these precise sections:\n"
-                        "1. **Core Alignments**: Highlight specific metric-backed matches from his career (e.g., portfolio scale, 0-to-1 building, platform stabilization).\n"
-                        "2. **Competency Translation**: If the JD requests a skill not explicitly in his dossier, professionally translate how his broader expertise mitigates this gap.\n"
-                        "3. **Fit Summary & Call to Action**: A brief concluding sentence directing them to drop a line to Kumaran.alchemist@gmail.com.\n\n"
+                        "You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.\n"
+                        "Analyze the pasted Job Description against Kumaran's context dossier below.\n"
+                        "You must calculate and output an exact structured scorecard based strictly on the following guidelines:\n\n"
+                        "CRITICAL STRUCTURAL SECTIONS TO GENERATE:\n"
+                        "1. **Overall Fit Score**: Evaluate an explicit overall percentage (e.g., '91% — Strong Match') dynamically based on your analysis.\n"
+                        "2. **Full Matches**: Bullet points listing clear overlaps (e.g., Payments/issuer processing, Product & platform leadership, etc.).\n"
+                        "3. **Partial Matches**: Structural items needing slight verification (e.g., Full P&L ownership, specific local market experience, etc.).\n"
+                        "4. **Gaps / Risks**: Honest assessments (e.g., No current EU/US work rights if outside India, or specified limitations derived from the JD vs context).\n"
+                        "5. **Why the Score is X%**: Output a numerical breakdown mapping exactly to these categories:\n"
+                        "   - Domain fit — X/25\n"
+                        "   - Product leadership — X/25\n"
+                        "   - Technology/platform depth — X/20\n"
+                        "   - Commercial/P&L — X/15\n"
+                        "   - Geography/regulatory fit — X/10\n"
+                        "   - Work authorisation — X/10\n"
+                        "   - *Ensure the sum of these fields matches your total generated percentage perfectly.*\n"
+                        "6. **Recommendation**: Worth interviewing: YES/NO and a short 'Why' sentence stating if gaps are non-critical.\n"
+                        "7. **Recommended Interview Focus**: Provide 3-4 highly specific question bullet points to guide the hiring team during their first interview clip (e.g., Clarify depth of full P&L ownership, Validate architecture choice frameworks, etc.).\n\n"
                         "Context Dossier:\n{context}"
                     )),
-                    ("human", "Analyze this job description:\n{jd}")
+                    ("human", "Analyze this job description and produce the explicit scorecard framework output:\n{jd}")
                 ])
                 
                 matcher_chain = match_prompt | llm | StrOutputParser()
@@ -93,6 +102,13 @@ with col1:
                 
                 st.markdown("---")
                 st.markdown("### 📊 Custom Alignment Report")
+                
+                # Dynamic visual rendering for modern web UI utility
+                if "91%" in analysis_output or "90%" in analysis_output or "Strong" in analysis_output:
+                    st.success("🎯 Alignment Calculated: Highly Compatible Candidate Profile")
+                elif "No" in analysis_output:
+                    st.warning("⚠️ Alignment Calculated: Partial Fit Profile")
+                    
                 st.markdown(analysis_output)
 
 # --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
@@ -129,19 +145,3 @@ with col2:
                 "- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.\n"
                 "- NEVER fabricate metrics, dates, or technical facts outside the provided dossier context.\n\n"
                 "At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email "
-                "(Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.\n\n"
-                "Context Dossier:\n{context}"
-            )),
-            ("human", "{input}")
-        ])
-        
-        context_docs = format_docs(retriever.invoke(recruiter_query))
-        chat_chain = chat_prompt | llm | StrOutputParser()
-        
-        with chat_container:
-            with st.chat_message("assistant"):
-                with st.spinner("Analyzing dossier..."):
-                    answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
-                    st.markdown(answer)
-                    
-        st.session_state.messages.append({"role": "assistant", "content": answer})
