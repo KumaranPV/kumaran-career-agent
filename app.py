@@ -118,9 +118,10 @@ with col2:
             ("system", (
                 "You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.\n"
                 "Answer the user's question using ONLY the provided context dossier below.\n\n"
-                "CRITICAL FORMATTING STYLE DIRECTIVE:\n"
-                "- If the user asks a broad summary question (e.g., 'Tell me about Kumaran', 'Who is Kumaran?', or requests an overview), "
-                "you MUST extract and output his explicit 'Executive Persona' framework verbatim from the context.\n"
+                "CRITICAL FORMATTING & SYNONYM DIRECTIVE:\n"
+                "- The terms 'Kumaran', 'Kumaran Parvatham', 'him', 'he', and 'the candidate' are absolute synonyms.\n"
+                "- If the user asks a broad summary question (e.g., 'Tell me about Kumaran', 'Who is Kumaran?', 'Who is this?', or requests an overview), "
+                "you MUST extract and output his explicit 'Executive Persona' framework dossier verbatim from the context.\n"
                 "- Preserve the exact layout structure, bullet points, headers, and specific formatting lines "
                 "(such as 'Payments domain depth × Product/platform leadership × Enterprise transformation × Execution at scale').\n"
                 "- Do NOT paraphrase or re-write these core structured profile blocks into paragraphs.\n\n"
@@ -130,6 +131,7 @@ with col2:
             )),
             ("human", "{input}")
         ])
+
         
         context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
