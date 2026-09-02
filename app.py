@@ -119,7 +119,9 @@ with col2:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
                 
-    if recruiter_query := st.chat_input("Ask about portfolio scales, tech stacks, or availability..."):
+    recruiter_query = st.chat_input("Ask about portfolio scales, tech stacks, or availability...")
+    
+    if recruiter_query:
         with chat_container:
             with st.chat_message("user"):
                 st.markdown(recruiter_query)
