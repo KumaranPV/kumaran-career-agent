@@ -97,12 +97,12 @@ def format_docs(docs):
 @st.cache_resource
 def initialize_rag_pipeline(path_to_data):
     all_loaded_docs = []
-    target_files = ["bio.md", "experience.md", "projects.md", "faq.md"]
     
-    for filename in target_files:
-        full_file_path = os.path.join(path_to_data, filename)
-        if os.path.exists(full_file_path):
-            file_loader = TextLoader(full_file_path, encoding="utf-8")
-            all_loaded_docs.extend(file_loader.load())
-            
-    if not all_loaded_docs:
+    # 100% Linear file parsing - eliminates nested loops and loop indentation risks entirely
+    bio_path = os.path.join(path_to_data, "bio.md")
+    if os.path.exists(bio_path):
+        all_loaded_docs.extend(TextLoader(bio_path, encoding="utf-8").load())
+        
+    exp_path = os.path.join(path_to_data, "experience.md")
+    if os.path.exists(exp_path):
+        all_loaded_docs.extend(TextLoader(exp_path, encoding="utf-8").load())
