@@ -40,8 +40,8 @@ def initialize_rag_pipeline(data_path):
     if not docs:
         raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
     
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    chunks = text_splitter.split_documents(docs)
+    # Bypasses character splitting entirely to prevent layout truncation
+    chunks = docs 
     
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(chunks, embeddings)
