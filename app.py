@@ -35,7 +35,8 @@ def format_docs(docs):
 
 @st.cache_resource
 def initialize_rag_pipeline(data_path):
-   loader = DirectoryLoader(data_path, glob="[bepf]*.md", loader_cls=TextLoader)
+    # Only loads bio.md, experience.md, projects.md, faq.md to prevent README contamination
+    loader = DirectoryLoader(data_path, glob="[bepf]*.md", loader_cls=TextLoader)
     docs = loader.load()
     if not docs:
         raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
@@ -57,7 +58,7 @@ except Exception as e:
     st.stop()
 
 # Create a clean 2-column executive workspace layout
-col1, col2 = st.columns([1, 1], gap="large")
+col1, col2 = st.columns(2, gap="large")
 
 # --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
 with col1:
@@ -71,7 +72,6 @@ with col1:
             st.warning("Please paste a valid job description text to execute analysis.")
         else:
             with st.spinner("Executing structural alignment matrix..."):
-                # Retrieve closest profile context based on the job description
                 relevant_docs = retriever.invoke(jd_input)
                 context_dossier = format_docs(relevant_docs)
                 
@@ -103,7 +103,6 @@ with col2:
     if "messages" not in st.session_state:
         st.session_state.messages = []
         
-    # Standard Chat window container
     chat_container = st.container(height=400)
     
     with chat_container:
@@ -117,7 +116,6 @@ with col2:
                 st.markdown(recruiter_query)
         st.session_state.messages.append({"role": "user", "content": recruiter_query})
         
-        # Build regular RAG prompt chain
         chat_prompt = ChatPromptTemplate.from_messages([
             ("system", (
                 "You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.\n"
