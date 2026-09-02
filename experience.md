@@ -1,3 +1,20 @@
+# Strategic Capabilities & Evidence Ledger
+
+The matrix below maps Kumaran Parvatham's core executive capabilities against concrete program data, scale metrics, and business outcomes achieved across his career:
+
+| Capability | Evidence | Scale/Outcome |
+| :--- | :--- | :--- |
+| **Platform Transformation** | Stabilised issuer-processing platform and established functional equivalence with incumbent CMS | Enabled ~$60M strategic opportunity; 1M+ active accounts toward potential 20M cards migration |
+| **Programme Recovery** | VisionPLUS → SmartVista core transformation recovery for leading Mauritian bank | ~$100M complex enterprise programme |
+| **Portfolio Governance** | Governed banking, SaaS infrastructure, and fintech implementation programmes | ~$15M portfolio scale |
+| **Product / Authentication** | Led 3DS/ACS execution across Visa, Mastercard, and Amex networks | +5–7% authentication success rate; reduced implementation time from 8 weeks to ~2.5 weeks |
+| **Operational Transformation** | Redesigned and modernised enterprise customer/service operating models | Incidents reduced by 50%; MTTR slashed from 10 to 3 days; raised CSAT from 2.5 to 3.75 |
+| **Organisation Building** | Systematically built and scaled functional corporate units (CS / QA / TACCO) | Expanded teams: CS (3 to 35); QA (7 to 51); TACCO (3 to 20) |
+| **Commercial Strategy** | Conceived and constructed multi-country international payments pipelines | ~$7.5M pipeline generated; ~$1M instantly converted to realised revenue |
+| **Cost Optimisation** | Re-engineered scheme/vendor economics and commercial agreements | >$140K in annualised savings |
+| **Zero-to-One Product** | Conceived, architected, and built the Agent Certification Framework (ACF) | Moved from raw strategic concept into a live multi-tenant working web product |
+| **Tokenisation** | Deep domain deployment of MDES and VTS payment tokenisation frameworks | End-to-end product/domain implementation experience |
+
 # Professional Experience & Work History
 
 ## Independent Product Builder | AI Governance & Financial Infrastructure
