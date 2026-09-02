@@ -149,5 +149,4 @@ with col2:
         context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
         
-        with 
-            chat_container:
+        with chat_container:
