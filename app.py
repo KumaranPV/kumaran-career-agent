@@ -76,7 +76,9 @@ with col1:
                 match_prompt = ChatPromptTemplate.from_messages([
                     ("system", (
                         "You are the senior executive talent agent for Kumaran Parvatham.\n"
-                        "Analyze the pasted Job Description against Kumaran's context dossier below.\n"
+                        "Analyze the pasted Job Description against Kumaran's context dossier below.\n\n"
+                        "CRITICAL OUTPUT INSTRUCTION:\n"
+                        "- You must actively cross-reference and pull metrics directly from Kumaran's 'Strategic Capabilities & Evidence Ledger' table inside the context to match their core job responsibilities.\n\n"
                         "Provide a structured, executive-level output with these precise sections:\n"
                         "1. **Core Alignments**: Highlight specific metric-backed matches from his career (e.g., portfolio scale, 0-to-1 building, platform stabilization).\n"
                         "2. **Competency Translation**: If the JD requests a skill not explicitly in his dossier, professionally translate how his broader expertise mitigates this gap.\n"
@@ -120,18 +122,16 @@ with col2:
                 "Answer the user's question using ONLY the provided context dossier below.\n\n"
                 "CRITICAL FORMATTING & SYNONYM DIRECTIVE:\n"
                 "- The terms 'Kumaran', 'Kumaran Parvatham', 'him', 'he', and 'the candidate' are absolute synonyms.\n"
-                "- If the user asks a broad summary question (e.g., 'Tell me about Kumaran', 'Who is Kumaran?', 'Who is this?', or requests an overview), "
-                "you MUST extract and output his explicit 'Executive Persona' framework dossier verbatim from the context.\n"
-                "- Preserve the exact layout structure, bullet points, headers, and specific formatting lines "
-                "(such as 'Payments domain depth × Product/platform leadership × Enterprise transformation × Execution at scale').\n"
-                "- Do NOT paraphrase or re-write these core structured profile blocks into paragraphs.\n\n"
+                "- If the user asks a broad summary question (e.g., 'Tell me about Kumaran', 'Who is Kumaran?', 'Who is this?', or requests an overview), you MUST extract and output his explicit 'Executive Persona' framework dossier verbatim from the context.\n"
+                "- If a recruiter asks about Kumaran's metrics, scale, evidence of his track record, or core capabilities, you MUST output the complete 'Strategic Capabilities & Evidence Ledger' matrix table layout verbatim from the context.\n"
+                "- Preserve the exact layout structure, bullet points, markdown tables, headers, and specific formatting lines.\n"
+                "- Do NOT paraphrase, summarize, or re-write these core structured profile blocks or tables into paragraphs.\n\n"
                 "At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email "
                 "(Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.\n\n"
                 "Context Dossier:\n{context}"
             )),
             ("human", "{input}")
         ])
-
         
         context_docs = format_docs(retriever.invoke(recruiter_query))
         chat_chain = chat_prompt | llm | StrOutputParser()
