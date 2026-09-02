@@ -2,11 +2,11 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 
-# Page configuration - Must be the first Streamlit command
+# Page configuration - MUST be the absolute first Streamlit command executed
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
 # ==============================================================================
-# GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS (BYPASSES SYNTAX CONFLICTS)
+# GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS
 # ==============================================================================
 
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
@@ -98,16 +98,12 @@ def initialize_rag_pipeline(data_path):
     docs = loader.load()
     if not docs:
         raise ValueError(f"No profile documents (.md files) found at path: {data_path}")
-    
     chunks = docs 
-    
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(chunks, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
-    
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1) 
     return retriever, llm
 
+# Global initialisation block - completely clean layout
 try:
-    retriever, llm = initialize_rag_pipeline(DATA_DIR)
-except Exception as e:
