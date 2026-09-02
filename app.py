@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 # ==============================================================================
-# 1. PAGE CONFIGURATION & ROOT STRUCTURAL SETUP
+# 1. CORE PAGE CONFIGURATION (MUST BE FIRST STREAMLIT DIRECTIVE)
 # ==============================================================================
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
@@ -11,7 +11,7 @@ st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", la
 load_dotenv()
 
 # ==============================================================================
-# 2. GLOBAL STORAGE: SYSTEM PROMPT CONSTANTS
+# 2. GLOBAL CONFIGURATION: AIRTIGHT SYSTEM PROMPT BLOCKS
 # ==============================================================================
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
 Analyze the pasted Job Description against Kumaran's context dossier below.
@@ -76,7 +76,6 @@ st.write(
     "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
 )
 
-# Airtight exception checking for core API configurations
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
     st.stop()
@@ -92,18 +91,16 @@ def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
 # ==============================================================================
-# 4. ADAPTIVE FILE SCANNING AND EMBEDDING LOADER
+# 4. EXPLORATORY DOSSIER PARSING & ENGINE CACHING
 # ==============================================================================
 @st.cache_resource
 def initialize_rag_pipeline():
     all_loaded_docs = []
     target_files = ["bio.md", "experience.md", "projects.md", "faq.md"]
     
-    # Adaptive environment cross-referencing layout bounds
-    possible_paths = [
-        os.getcwd(),
-        os.path.dirname(os.path.abspath(__file__)),
-        "/mount/src/kumaran-career-agent"
-    ]
-    
-    found_dir = None
+    # Cycles safely through standard cloud pathway patterns
+    found_dir = "."
+    if os.path.exists("/mount/src/kumaran-career-agent/bio.md"):
+        found_dir = "/mount/src/kumaran-career-agent"
+        
+    for filename in target_files:
