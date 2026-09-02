@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 
-# Page configuration
+# Page configuration - Must be the first Streamlit command
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
 # Title and Header Layout
@@ -148,4 +148,3 @@ with col2:
         chat_chain = chat_prompt | llm | StrOutputParser()
         
         with chat_container:
-            with st.chat_message("assistant"):
