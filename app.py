@@ -139,7 +139,9 @@ llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
 
 # Initialize Session State arrays safely outside block grids
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Welcome. I am Kumaran's executive talent agent. Ask me any question about his track record, leadership philosophy, domain gaps, or reasons to hire."}
+    ]
 
 # ==============================================================================
 # 5. FRONTEND GRID DISPLAY (SAFE FLATTENED RENDER)
@@ -157,6 +159,3 @@ with col1:
 
 # --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
 with col2:
-    st.markdown("### 💬 Option B: General Recruiter Q&A")
-    st.write("Ask specific exploratory or adversarial questions about Kumaran's leadership competencies, technical tools, or project frameworks.")
-    
