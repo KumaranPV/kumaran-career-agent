@@ -180,19 +180,24 @@ Evidence used: `experience.md` (Zeta Core Exception Optimization Case Study) / `
 
 ---
 
+---
+
 ## Topic: Core Vetting Lens — AI & Product Building
 ### Layer 1 — Quick Response
-Kumaran is an active builder exploring agentic workflows, custom LLM co-builder patterns, multi-tenant state isolation, and AI safety governance frameworks. His focus is translating emerging AI capabilities into enterprise platforms.
+Kumaran is an active zero-to-one product builder working at the intersection of agentic AI, enterprise governance, and financial infrastructure. His focus is not simply experimenting with LLMs, but translating emerging AI capabilities into governed enterprise products with clear business value, economics, controls, and operating models.
 
 ### Layer 2 — Detailed Explanation
-- **Summary:** Hands-on software product builder leveraging modern LLM paradigms as strategic co-builders to rapidly map, test, and deploy functional enterprise applications from scratch.
-- **Evidence:** Architected multi-tenant user authentication trails, OAuth decision systems, and configurable policy engines.
-- **Case Studies:** Developed and deployed the Agent Certification Framework (ACF) web application, establishing a multi-tenant matrix to evaluate the viability, economics, and risk of autonomous AI agents.
-- **Quantified Outcomes:** Bootstrapped the entire ACF web product from concept to a functioning live engine within months of leaving Zeta, demonstrating agile zero-to-one execution capability.
-- **Questions to Ask in Interview:**
-  1. "How do you manage tenant isolation and federated SSO state tracking inside an AI-driven multi-tenant architecture?"
-  2. "What parameters should a modern enterprise use to evaluate the readiness and economic risk of an autonomous agent?"
+- **Summary:** Identifies enterprise problems, forms the product thesis, defines workflows and decision logic, works through product and architecture trade-offs with engineering, and takes concepts through build, testing, and production deployment.
+- **Evidence:** Conceived and developed ACF – Agent Certification Framework, including structured assessment journeys, configurable decisioning, maker-reviewer-approver governance, organisational hierarchy, multi-tenant isolation, federated SSO/OAuth, decision history, automated testing and production deployment.
+- **Case Study:** ACF began as a framework for answering “Should this AI agent be built?” Kumaran evolved it into a functioning multi-tenant product assessing business viability, economics, risk, controls, and implementation readiness. The roadmap is now extending beyond GO/NO-GO decisions toward identifying what needs to change to make an agent viable, followed by post-deployment evaluation.
+- **Product-Building Evidence:** Kumaran personally led the journey from problem definition and product concept through requirements, governance design, workflow definition, prioritisation, testing and deployment, while using modern AI tools as strategic development co-builders to accelerate product definition, implementation, testing, and iteration, while retaining absolute human ownership of product decisions and governance.
+- **Outcome:** Took ACF from concept to a functioning deployed product within approximately two months, demonstrating the ability to return to hands-on zero-to-one product creation after senior enterprise leadership roles.
+- **What this demonstrates:** Product discovery, AI governance, enterprise SaaS thinking, product–engineering collaboration, iterative delivery, multi-tenant product design, and the ability to convert domain expertise into reusable intellectual property.
+- **Questions to explore in interview:**
+  1. "What problem did you identify that led you to build ACF, and how did the product thesis evolve?"
+  2. "How did you decide what belonged in the first usable version versus the longer-term roadmap?"
+  3. "What product and architecture trade-offs did you make while moving from framework to working application?"
+  4. "How should an enterprise determine whether an AI agent is economically viable and sufficiently governed to deploy?"
+  5. "How has building ACF changed the way you think about Product–Engineering collaboration?"
 
-Evidence used: `projects.md` (ACF Product Architecture Specs / AI Financial Orchestration Logic Ledger)
-
-
+Evidence used: `projects.md` — ACF product architecture, product evolution, governance model, and AI financial-orchestration records.
