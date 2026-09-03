@@ -232,3 +232,25 @@ The structural metrics across his career history defend these explicit scoring p
 - **GM & VP Engineering Boundaries (69%-84% Fit Context):** Scaled Engineering Quality divisions up to 51 resources and managed ~$750K operational budgets. However, he structures architecture through a product outcome lens rather than personal low-level code compilation, and commercial tracking focuses on program portfolio values (~$15M) rather than standalone general manager business sheets.
 
 Evidence used: `experience.md` (Zeta Infrastructure Stabilization / Mauritian Bank Recovery Portfolio Logs) / `projects.md` (ACF Architecture Specs) / `bio.md` (Resume 2026 Mandate Baseline)
+
+---
+
+## Topic: Mobility, Work Authorization & Availability
+### Layer 1 — Quick Response
+Kumaran is located in India, open to international relocation, and available for an immediate transition. For international mandates (such as the EU, UK, or Singapore), standard corporate visa sponsorship pipelines are required where applicable.
+
+### Layer 2 — Detailed Explanation
+When evaluating Kumaran's mobility parameters and current transition baseline for global mandates, use the following operational criteria:
+
+- **Current Location:** India
+- **Relocation Posture:** Open internationally to global financial hubs.
+- **Work Authorization Loops:** Requires corporate sponsorship in the EU, UK, Singapore, etc., where applicable. 
+- **Immigration Specifics:** Kumaran currently requires Irish employment authorisation. For sufficiently senior qualifying roles, Ireland's Critical Skills Employment Permit route may be relevant. Immigration eligibility ultimately depends on the employer, the specific role framework, and national authorities. The dossier does not establish that he already possesses active EU/US work rights.
+- **Availability Status:** Immediate/current status as appropriate for executive mandates.
+
+### Layer 3 — Show me the evidence
+The operational history across his profile validates this cross-border flexibility:
+- **Global Delivery Footprint:** Extensive track record coordinating multi-region infrastructure platforms, managing international stakeholder matrices, and executing turnarounds across diverse territories including India, Asia, and direct core bank migrations in Mauritius.
+- **Senior Vetting Alignment:** Best suited for senior executive roles where strategic value and platform capabilities align cleanly with global executive immigration paths (like the Irish Critical Skills route for specialized technology leadership).
+
+Evidence used: `bio.md` (Resume 2026 Milestone History) / `experience.md` (Multi-Region Matrix Portfolios)
