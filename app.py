@@ -144,18 +144,13 @@ if "messages" not in st.session_state:
     ]
 
 # ==============================================================================
-# 5. FRONTEND GRID DISPLAY (SAFE FLATTENED RENDER)
+# 5. LINEAR WORKSPACE LAYOUT (100% VISIBILITY & ZERO INDENTATION RISK)
 # ==============================================================================
-col1, col2 = st.columns(2, gap="large")
+st.markdown("---")
 
-# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
-with col1:
-    st.markdown("### 🎯 Option A: Match Your Job Description")
-    st.write("Paste your target JD below to get an instant scorecard mapping Kumaran's career dossier directly to your requirements.")
-    
-    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box_new", placeholder="Looking for a Product/Transformation Executive with experience...")
-    
-    execute_match = st.button("Analyze Role Fit ⚡️")
+# --- SECTION 1: THE INTERACTIVE JOB MATCHER (OPTION A) ---
+st.markdown("### 🎯 Option A: Match Your Job Description")
+st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
 
-# --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
-with col2:
+jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box_flat", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
+
