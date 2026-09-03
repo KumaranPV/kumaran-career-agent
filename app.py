@@ -72,17 +72,14 @@ st.write(
     "and talent partners evaluate **Kumaran Parvatham** instantly against your specific leadership mandate."
 )
 
-# Render three static, informative workspace navigation guides
 st.markdown("### 🛠️ Use this ecosystem to:")
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.info("**🎯 Assess against my job description**\n\nPaste your target JD in *Option A* below to generate a metric-backed fit scorecard.")
+    st.info("**🎯 Option A Tab**\n\nAssess against my job description - Paste your target JD to generate a metric-backed fit scorecard.")
 with c2:
-    st.info("**📈 Understand his track record**\n\nUse *Option B* to explore payments, product, transformation, AI frameworks, or commercial outcomes.")
+    st.info("**📈 Option B Tab**\n\nUnderstand his track record - Explore payments, product, transformation, AI frameworks, or commercial outcomes.")
 with c3:
-    st.info("**⚡ Challenge the profile**\n\nUse *Option B* to stress-test his explicit gaps, organizational limits, and interview focus points.")
-
-st.markdown("<p style='text-align: center; font-weight: bold; color: #888;'>Or ask your own question below in the Option B terminal box.</p>", unsafe_allow_whitespace=True, unsafe_allow_html=True)
+    st.info("**⚡ Option B Tab**\n\nChallenge the profile - Stress-test his explicit gaps, organizational limits, and interview focus points.")
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -140,19 +137,24 @@ llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
 
 # Initialize Session State arrays safely outside block grids
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Welcome. I am Kumaran's executive talent agent. Ask me any question about his track record, leadership philosophy, domain gaps, or reasons to hire."}
+    ]
 
 # ==============================================================================
-# 5. FRONTEND WORKSPACE GRID DISPLAY
+# 5. FIXED INTERFACE CONTROL (TAB WORKSPACE PREVENTS ELEMENT CROPPING)
 # ==============================================================================
-col1, col2 = st.columns(2, gap="large")
+st.markdown("---")
 
-# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
-with col1:
-    st.markdown("### 🎯 Option A: Match Your Job Description")
-    st.write("Paste your target JD below to get an instant, metric-backed gap analysis mapping Kumaran's career dossier directly to your requirements.")
+tab1, tab2 = st.tabs(["🎯 Option A: Match Your Job Description", "💬 Option B: General Recruiter Q&A Console"])
+
+# --- TAB 1: THE INTERACTIVE JOB MATCHER ---
+with tab1:
+    st.markdown("### Match Your Open Job Specification")
     
-    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
-    
-    if st.button("Analyze Role Fit ⚡️"):
-        if jd_input.strip() == "":
+    jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box_restored_final", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
+    execute_match = st.button("Analyze Role Fit ⚡️")
+
+    if execute_match and jd_input.strip() != "":
+        with st.spinner("Executing structural alignment matrix..."):
+            relevant_docs = retriever.invoke(jd_input)
