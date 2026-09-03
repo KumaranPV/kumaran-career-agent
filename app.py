@@ -67,12 +67,7 @@ Context Dossier:
 # 3. INTERFACE HEADER RENDERING
 # ==============================================================================
 st.title("💼 Kumaran Parvatham")
-st.subheader("AI Executive Talent Agent")
-st.write(
-    "Welcome! I am Kumaran's autonomous career agent. You can ask me questions about his "
-    "24+ years of experience across Banking, Fintech, Payments, Enterprise Transformation, "
-    "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
-)
+st.subheader("AI Executive Talent Ecosystem")
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -133,16 +128,16 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ==============================================================================
-# 5. FRONTEND WORKSPACE GRID DISPLAY (THE FIERCELY STABLE ARCHITECTURE)
+# 5. FRONTEND TAB GRIDS (ELIMINATES COLUMN DISPLACEMENT ENTIRELY)
 # ==============================================================================
-col1, col2 = st.columns(2, gap="large")
+tab1, tab2 = st.tabs(["🎯 Option A: Match Your Job Description", "💬 Option B: 24/7 Executive Chat Console"])
 
-# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
-with col1:
-    st.markdown("### 🎯 Option A: Match Your Job Description")
-    st.write("Paste your target JD below to get an instant, metric-backed gap analysis mapping Kumaran's career dossier directly to your requirements.")
+# --- TAB 1: THE INTERACTIVE JOB MATCHER ---
+with tab1:
+    st.markdown("### Match Your Open Job Specification")
+    st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
     
-    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience...")
+    jd_input = st.text_area("Paste Job Description here:", height=250, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience...")
     
     if st.button("Analyze Role Fit ⚡️"):
         if jd_input.strip() == "":
@@ -162,3 +157,9 @@ with col1:
                 
                 st.markdown("---")
                 st.markdown("### 📊 Custom Alignment Report")
+                st.markdown(analysis_output)
+
+# --- TAB 2: THE 24/7 CHAT CONSOLE ---
+with tab2:
+    st.markdown("### General Recruiter Q&A Console")
+
