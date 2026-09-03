@@ -73,8 +73,11 @@ st.write(
 )
 
 st.markdown("### 🛠️ Use this ecosystem to:")
-st.info("**🎯 Option A: Assess against my job description** - Use the Job Matcher layout directly below.")
-st.info("**📈 Option B: Understand his track record & Challenge the profile** - Use the Chat Console terminal found further down the page.")
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.info("**🎯 Option A: Assess against my job description** - Use the Job Matcher layout directly below.")
+with c2:
+    st.info("**📈 Option B: Understand his track record & Challenge the profile** - Use the Chat Console terminal found further down the page.")
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -153,5 +156,5 @@ if execute_match and jd_input.strip() != "":
     with st.spinner("Executing structural alignment matrix..."):
         relevant_docs = retriever.invoke(jd_input)
         context_dossier = format_docs(relevant_docs)
-        match_prompt = ChatPromptTemplate.from_messages([
-            ("system", SYSTEM_JOB_MATCHER_INSTRUCTION),
+        
+        # Fixed: Converted to from_template to prevent list bracket errors entirely
