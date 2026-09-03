@@ -1,62 +1,176 @@
-# Strategic Capabilities & Evidence Ledger
+# Experience & Evidence — Kumaran Parvatham
 
-The matrix below maps Kumaran Parvatham's core executive capabilities against concrete program data, scale metrics, and business outcomes achieved across his career:
+## 1. Independent Product Builder — AI Governance & Financial Infrastructure
+**Self-employed | Jul 2026 – Present | India**
 
-| Capability | Evidence | Scale/Outcome |
-| :--- | :--- | :--- |
-| **Platform Transformation** | Stabilised issuer-processing platform and established functional equivalence with incumbent CMS | Enabled ~$60M strategic opportunity; 1M+ active accounts toward potential 20M cards migration |
-| **Programme Recovery** | VisionPLUS → SmartVista core transformation recovery for leading Mauritian bank | ~$100M complex enterprise programme |
-| **Portfolio Governance** | Governed banking, SaaS infrastructure, and fintech implementation programmes | ~$15M portfolio scale |
-| **Product / Authentication** | Led 3DS/ACS execution across Visa, Mastercard, and Amex networks | +5–7% authentication success rate; reduced implementation time from 8 weeks to ~2.5 weeks |
-| **Operational Transformation** | Redesigned and modernised enterprise customer/service operating models | Incidents reduced by 50%; MTTR slashed from 10 to 3 days; raised CSAT from 2.5 to 3.75 |
-| **Organisation Building** | Systematically built and scaled functional corporate units (CS / QA / TACCO) | Expanded teams: CS (3 to 35); QA (7 to 51); TACCO (3 to 20) |
-| **Commercial Strategy** | Conceived and constructed multi-country international payments pipelines | ~$7.5M pipeline generated; ~$1M instantly converted to realised revenue |
-| **Cost Optimisation** | Re-engineered scheme/vendor economics and commercial agreements | >$140K in annualised savings |
-| **Zero-to-One Product** | Conceived, architected, and built the Agent Certification Framework (ACF) | Moved from raw strategic concept into a live multi-tenant working web product |
-| **Tokenisation** | Deep domain deployment of MDES and VTS payment tokenisation frameworks | End-to-end product/domain implementation experience |
+### Scope
+Zero-to-one product building at the intersection of agentic AI, enterprise governance and financial infrastructure.
 
-# Professional Experience & Work History
+### Direct ownership
+- Conceived ACF from problem definition into a working multi-tenant web product.
+- Defined product thesis, assessment journeys, governance model and decision workflows.
+- Owned prioritisation and product evolution across maker-reviewer-approver governance, organisational hierarchy, federated SSO, decision history and production deployment.
+- Expanded the roadmap from pre-creation GO / NO-GO assessment toward lifecycle evaluation and remediation guidance.
 
-## Independent Product Builder | AI Governance & Financial Infrastructure
-- **Company:** Self Employed
-- **Dates:** Jul 2026 – Present (India)
-- **Core Focus:** Agentic AI Governance, 0-to-1 Web Products, Risk and Controls Architecture.
-- **Key Achievements:**
-  - Conceived and built ACF (Agent Certification Framework) from problem definition into a working multi-tenant web product, combining business viability, economics, risk, controls, and implementation readiness into governed assessment and decision workflows.
-  - Owned product evolution across assessment journeys, configurable decisioning, maker-reviewer-approver governance, organisational hierarchy, federated SSO, decision history, and production deployment.
-  - Expanded the roadmap from pre-creation GO/NO-GO assessment toward lifecycle evaluation to identify guardrails, interventions, and remediation needed to make proposed agents viable before creation and assess them post-deployment.
+### Evidence
+- `PROJ-ACF-001`
+- `PROJ-ACF-002`
+- `PROJ-ACF-003`
 
-## Director - SDET | Enterprise Transformation, Product & Platform Execution
-- **Company:** Zeta (BWDSPL)
-- **Dates:** Jan 2020 – Jul 2026 (India / UK / US)
-- **Core Focus:** Credit, Prepaid, Benefits & 3DS SaaS Infrastructure.
-- **Key Achievements:**
-  - **Platform Scale & Strategic Value:** Stabilised the Tachyon platform, restored stakeholder confidence, and established functional equivalence with an incumbent card-management platform, supporting 1M+ active accounts and a potential 20M-card migration path representing a ~US$60M opportunity.
-  - **Build & Scale:** Built Customer Success from 3 to 35, scaled Enterprise Quality from 7 to 51, and TACCO from 3 to 20; defined roles, competencies, KRAs, workflows, leadership layers, and repeatable operating mechanisms.
-  - **Product, Customer & Commercial Outcomes:** Led senior engagement across a ~US$15M banking/fintech portfolio; improved predictability to ~85%, reduced incidents by 50%, lowered MTTR from ~10 to 3 days, raised CSAT from 2.5 to 3.75, and delivered ~US$140K in annualised scheme/vendor savings.
-  - **Product Launch & Adoption:** Led 3DS/ACS execution across Visa, Mastercard, and Amex, improving authentication success by 5-7% and reducing implementation time from ~8 to ~2.5 weeks; supported UK/EU PSD2/SCA launch readiness and customer adoption.
+### Boundary
+Do not position this as proof that Kumaran is a career AI engineer or ML researcher. It demonstrates product discovery, product judgement, AI governance, product-engineering collaboration and zero-to-one execution.
 
-## Associate Vice President - Products, Platforms, Business Development & Delivery
-- **Company:** Quatrro Processing Services / SwinkPay
-- **Dates:** Jun 2013 – Dec 2019 (India / US / Vietnam / Caribbean)
-- **Core Focus:** Issuing, Acquiring, Prepaid, and Digital-Payment Propositions.
-- **Key Achievements:**
-  - **Growth & Market Expansion:** Built a ~US$7.5M multi-country opportunity pipeline through market research, client discovery, product demonstrations, solution shaping, executive engagement, and partnerships; converted ~US$1M into realised revenue.
-  - **New Products & Ecosystem Building:** Developed and commercialised SwinkPay as a mobile/QR-led merchant-acceptance proposition supporting Visa, Mastercard, and RuPay; expanded the portfolio with multi-currency prepaid plus clearing and settlement capabilities.
-  - **Market-Entry Execution:** Translated client, scheme, regulatory, and operating requirements into localisation, certification, partner integration, and go-live readiness; secured Mastercard Third Party Processor certification and established a US processing footprint.
+---
 
-## Founder & Director — Zero-to-One Payments Product
-- **Company:** YiPay Payments Venture (Bootstrapped | India)
-- **Dates:** 2015 – 2017
-- **Core Focus:** Interoperable Account-to-Account Consumer & Merchant Payment Propositions.
-- **Key Achievements:**
-  - Bootstrapped an interoperable account-to-account payment platform using linked bank networks, proving product-market viability before real-time account payments went mainstream in India.
-  - Designed complex interoperable transaction-routing logic and filed a provisional patent application, managing a lean team of three to build the functional MVP, execute corporate bank demonstrations, and structure commercial partner integrations.
+## 2. Zeta (BWDSPL)
+### Director — Enterprise Transformation, Product & Platform Execution
+**Jan 2020 – Jul 2026 | India / UK / US**
+_Source title provided in earlier records: Director - SDET; use functional title when describing mandate._
 
-## Earlier Leadership Career - Transformation, Delivery, Quality & Regional Capability
-- **Companies:** Quinnox | Verinite | HSBC GLT | Cognizant | Capgemini | Thinksoft | CitiFinancial | Fluidline
-- **Dates:** Feb 2002 – Jun 2013 (India / Mauritius / Southeast Asia / UK / China)
-- **Key Achievements:**
-  - **Complex Transformation Recovery:** Recovered and enabled execution of an ~US$100M VisionPLUS-to-SmartVista transformation for a leading Mauritian bank by restoring priorities, ownership, delivery control, and stakeholder alignment across technology, infrastructure, vendors, and business teams.
-  - **Regional Capability Building:** Established a 20+ member Malaysia capability for an ~US$100M accounting transformation, leading organisation design, knowledge transition, governance, performance management, and readiness for independent regional operations.
-  - **Cross-Industry Execution:** Led banking, healthcare, and logistics technology engagements, including regional Testing Centre of Excellence models and customer-facing delivery across Vietnam and Southeast Asia.
+### Core scope
+Credit, prepaid, benefits, DDA, issuer processing and 3DS SaaS/platform execution.
+
+### Platform transformation
+- Led customer/platform execution around Tachyon stabilisation and functional-equivalence readiness against an incumbent card-management environment.
+- Supported more than 1M active accounts/cards and a potential path toward approximately 20M cards.
+- Enabled/protected an approximately US$60M strategic platform migration opportunity.
+
+**Ownership:** Led customer/platform execution, readiness, governance and cross-functional alignment.  
+**Do not claim:** generated US$60M revenue, closed a US$60M deal, or owned a US$60M P&L.
+
+Evidence: `EXP-ZETA-PLATFORM-001`
+
+### Organisation building
+- Built Customer Success from 3 to 35.
+- Scaled Enterprise Quality from 7 to 51.
+- Built TACCO from 3 to 20.
+- Defined roles, competencies, KRAs, workflows, SOPs and leadership layers.
+
+Evidence:
+- `EXP-ZETA-CS-001`
+- `EXP-ZETA-QA-001`
+- `EXP-ZETA-TACCO-001`
+
+### Delivery and operational outcomes
+- Improved delivery predictability to approximately 85%.
+- Reduced production incidents by 50%.
+- Reduced MTTR from approximately 10 days to 3 days.
+- Improved CSAT from 2.5 to 3.75.
+
+Evidence:
+- `EXP-ZETA-PREDICT-001`
+- `EXP-ZETA-OPS-001`
+
+### Authentication / network execution
+- Led 3DS / ACS execution across Visa, Mastercard and Amex.
+- Improved authentication success by approximately 5–7%.
+- Reduced implementation time from approximately 8 weeks to approximately 2.5 weeks.
+- Supported UK / EU PSD2 / SCA readiness and customer adoption.
+
+Evidence: `EXP-ZETA-3DS-001`
+
+### Commercial / budget exposure
+- Governed an approximately US$15M banking / fintech portfolio.
+- Managed approximately US$750K headcount budget exposure.
+- Delivered approximately US$140K+ annualised scheme/vendor savings.
+
+Evidence:
+- `EXP-ZETA-PORTFOLIO-001`
+- `EXP-ZETA-BUDGET-001`
+- `EXP-ZETA-SAVINGS-001`
+
+### Technical / architecture involvement
+Kumaran worked closely with Product, Engineering, Architecture, SRE, Quality and Operations on platform constraints, NFRs, production readiness and exception flows.
+
+In the clearing / coupon flow case, he identified/challenged a control weakness where clearing records could progress before the required coupon event was reliably established, and advocated stronger dependency controls and operational recovery mechanisms.
+
+**Boundary:** Do not describe Kumaran as the system architect unless additional evidence establishes direct architecture ownership.
+
+Evidence: `EXP-ZETA-ARCH-001`
+
+---
+
+## 3. Quatrro Processing Services / SwinkPay
+### Associate Vice President — Products, Platforms, Business Development & Delivery
+**Jun 2013 – Dec 2019 | India / US / Vietnam / Caribbean**
+
+### Commercial growth
+- Built an approximately US$7.5M multi-country payments pipeline.
+- Approximately US$1M converted into realised revenue.
+- Activities included market research, client discovery, product demonstrations, solution shaping, executive engagement and partnerships.
+
+Evidence: `EXP-QUATTRO-COMM-001`
+
+### Product / ecosystem development
+- Developed and commercialised SwinkPay as a mobile / QR-led merchant-acceptance proposition supporting Visa, Mastercard and RuPay.
+- Expanded multi-currency prepaid, clearing and settlement capabilities.
+
+Evidence: `EXP-QUATTRO-PRODUCT-001`
+
+### Market entry
+- Translated client, scheme, regulatory and operating requirements into localisation, certification, partner integration and go-live readiness.
+- Secured Mastercard Third Party Processor certification.
+- Established a US processing footprint.
+
+Evidence: `EXP-QUATTRO-MARKET-001`
+
+---
+
+## 4. YiPay Payments Venture
+### Founder & Director — Zero-to-One Payments Product
+**2015 – 2017 | Bootstrapped | India**
+
+### Product
+- Co-created an interoperable account-to-account consumer and merchant payments proposition using linked bank networks.
+- Led MVP definition, bank demonstrations, transaction-routing logic, commercial validation and partner discussions.
+- Managed a lean three-person team.
+- A provisional patent application was filed around transaction-routing logic.
+
+Evidence: `EXP-YIPAY-001`
+
+### Boundary
+Do not state that YiPay achieved large-scale market adoption unless additional evidence is added.
+
+---
+
+## 5. Earlier Leadership Career
+**Quinnox | Verinite | HSBC GLT | Cognizant | Capgemini | Thinksoft | CitiFinancial | Fluidline**  
+**Feb 2002 – Jun 2013 | India / Mauritius / Southeast Asia / UK / China**
+
+### Programme recovery
+- Recovered and enabled execution of an approximately US$100M VisionPLUS-to-SmartVista transformation for a leading Mauritian bank.
+- Restored priorities, ownership, delivery control and stakeholder alignment across technology, infrastructure, vendors and business teams.
+
+Evidence: `EXP-EARLY-RECOVERY-001`
+
+### Regional capability building
+- Established a 20+ member Malaysia capability supporting an approximately US$100M accounting transformation.
+- Led organisation design, knowledge transition, governance, performance management and readiness for independent regional operations.
+
+Evidence: `EXP-EARLY-MALAYSIA-001`
+
+### Cross-industry delivery
+- Led banking, healthcare and logistics technology engagements.
+- Built regional Testing Centre of Excellence and customer-facing delivery capabilities across Southeast Asia.
+
+Evidence: `EXP-EARLY-DELIVERY-001`
+
+---
+
+# Capability Summary
+
+| Capability | Evidence | Outcome |
+|---|---|---|
+| Platform transformation | Zeta Tachyon / functional equivalence | ~US$60M opportunity; 1M+ active toward potential 20M |
+| Programme recovery | VisionPLUS → SmartVista | ~US$100M programme |
+| Portfolio governance | Zeta banking/fintech programmes | ~US$15M |
+| Authentication | Visa / Mastercard / Amex 3DS / ACS | +5–7%; ~8 weeks → ~2.5 weeks |
+| Operational transformation | Zeta delivery / service model | Incidents -50%; MTTR 10→3; CSAT 2.5→3.75 |
+| Organisation building | CS / QA / TACCO | 3→35; 7→51; 3→20 |
+| Commercial | Quatrro international pipeline | ~US$7.5M pipeline; ~US$1M realised |
+| Cost optimisation | Scheme/vendor economics | ~US$140K+ annualised savings |
+| Zero-to-one product | ACF | Concept → working deployed multi-tenant product |
+| Tokenisation | MDES / VTS | Direct product/domain implementation experience |
+
+## Evidence used
+`evidence_ledger.yaml`
