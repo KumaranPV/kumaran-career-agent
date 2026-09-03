@@ -133,7 +133,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ==============================================================================
-# 5. FRONTEND WORKSPACE GRID DISPLAY (GUARANTEED TWO COLUMNS)
+# 5. FRONTEND WORKSPACE GRID DISPLAY (THE FIERCELY STABLE ARCHITECTURE)
 # ==============================================================================
 col1, col2 = st.columns(2, gap="large")
 
