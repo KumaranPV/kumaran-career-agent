@@ -142,19 +142,18 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ==============================================================================
-# 5. FRONTEND WORKSPACE GRID DISPLAY
+# 5. LINEAR WORKSPACE LAYOUT (100% VISIBILITY & ZERO INDENTATION RISK)
 # ==============================================================================
-col1, col2 = st.columns(2, gap="large")
+st.markdown("---")
 
-# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
-with col1:
-    st.markdown("### 🎯 Option A: Match Your Job Description")
-    st.write("Paste your target JD below to get an instant, metric-backed gap analysis mapping Kumaran's career dossier directly to your requirements.")
-    
-    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
-    
-    if st.button("Analyze Role Fit ⚡️"):
-        if jd_input.strip() == "":
-            st.warning("Please paste a valid job description text.")
-        else:
-            with st.spinner("Executing structural alignment matrix..."):
+# --- SECTION 1: THE INTERACTIVE JOB MATCHER (OPTION A) ---
+st.markdown("### 🎯 Option A: Match Your Job Description")
+st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
+
+jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
+
+execute_match = st.button("Analyze Role Fit ⚡️")
+
+if execute_match and jd_input.strip() != "":
+    relevant_docs = retriever.invoke(jd_input)
+    context_dossier = format_docs(relevant_docs)
