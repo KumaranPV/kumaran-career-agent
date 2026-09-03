@@ -130,3 +130,33 @@ When analyzing how his leadership philosophy shows up in practice, it typically 
 - **How I Work with Customers:** Listen deeply for the underlying operational business problem, not just the requested feature; translate it directly into core product or operating choices.
 - **How I Lead in Crisis:** Shift to a more directive posture where necessary, enforcing clear temporary ownership and rapid escalation, and return complete autonomy once system stability is fully restored.
 
+---
+
+## Topic: Why Hire Kumaran / Strategic Fit & Trade-offs
+### Layer 1 — Quick Response
+You should strongly consider Kumaran when you need an executive who operates seamlessly at the intersection of deep payments expertise, platform transformation, and zero-to-one capability building. He may be less suitable if you require a low-level career software-engineering leader who still codes daily, a pure finance executive, or a traditional enterprise architect.
+
+### Layer 2 — Detailed Explanation
+When evaluating structural fit for your senior leadership mandate, use the clear parameters below to assess alignment:
+
+**You should strongly consider Kumaran when you need:**
+- Deep payments and card systems infrastructure expertise;
+- Highly complex product/platform transformation execution;
+- A cross-functional executive able to explicitly bridge business strategy and technology deployment;
+- Rapid structural recovery of complex or stalled technology programmes;
+- Zero-to-one platform, operating model, and capability building;
+- Regulated-market execution and strict corporate compliance alignment;
+- A holistic leader who is equally comfortable managing customer, product, engineering, and operational problems simultaneously.
+
+**He may be less suitable when you need:**
+- A career software-engineering manager or lead developer who still writes and reviews production code daily;
+- A pure CFO / corporate finance executive;
+- A pure career enterprise architect focused strictly on technical coding syntax and language selection;
+- A leader whose entire historical track record has been dedicated exclusively to direct full standalone entity P&L ownership;
+- Local-language-dependent domestic-market leadership where native linguistic fluency is a mandatory operational constraint.
+
+### Layer 3 — Show me the evidence
+The structural metrics across his dossier support these strategic boundaries:
+- **Transformational Evidence:** Successfully recovered a stalled ~$100M core transformation programme for a leading Mauritian bank, and stabilized a SaaS infrastructure platform at Zeta, protecting a ~$60M strategic opportunity.
+- **Building Evidence:** Scaled functional corporate units from scratch—expanding Customer Success (3 ➔ 35), Enterprise Quality (7 ➔ 51), and TACCO support groups (3 ➔ 20).
+- **Technical Fluency Boundaries:** Conceived, designed, and deployed the Agent Certification Framework (ACF) web product using modern LLM co-builder models, highlighting product architecture mastery over traditional manual syntax engineering.
