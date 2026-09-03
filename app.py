@@ -75,7 +75,7 @@ st.write(
 st.markdown("### 🛠️ Use this ecosystem to:")
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.info("**🎯 Assess against my job description**\n\nPaste your target JD in *Option A* below to generate a metric-backed fit scorecard.")
+    st.info("**🎯 Assess against my job description**\n\nPaste your target JD in *Option A* to generate a metric-backed fit scorecard.")
 with c2:
     st.info("**📈 Understand his track record**\n\nUse *Option B* to explore payments, product, transformation, AI frameworks, or commercial outcomes.")
 with c3:
@@ -142,18 +142,21 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ==============================================================================
-# 5. LINEAR WORKSPACE LAYOUT (100% VISIBILITY & ZERO INDENTATION RISK)
+# 5. FRONTEND GRID DISPLAY (SAFE FLATTENED RENDER)
 # ==============================================================================
-st.markdown("---")
+col1, col2 = st.columns(2, gap="large")
 
-# --- SECTION 1: THE INTERACTIVE JOB MATCHER (OPTION A) ---
-st.markdown("### 🎯 Option A: Match Your Job Description")
-st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
+# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
+with col1:
+    st.markdown("### 🎯 Option A: Match Your Job Description")
+    st.write("Paste your target JD below to get an instant scorecard mapping Kumaran's career dossier directly to your requirements.")
+    
+    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box_new", placeholder="Looking for a Product/Transformation Executive with experience...")
+    
+    execute_match = st.button("Analyze Role Fit ⚡️")
 
-jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
-
-execute_match = st.button("Analyze Role Fit ⚡️")
-
-if execute_match and jd_input.strip() != "":
-    relevant_docs = retriever.invoke(jd_input)
-    context_dossier = format_docs(relevant_docs)
+# --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
+with col2:
+    st.markdown("### 💬 Option B: General Recruiter Q&A")
+    st.write("Ask specific exploratory or adversarial questions about Kumaran's leadership competencies, technical tools, or project frameworks.")
+    
