@@ -43,10 +43,18 @@ CRITICAL CONVERSATIONAL DIRECTION:
 - Maintain a polished, articulate, professional executive tone.
 - Your dossier contains a structured 'High-Stakes Adversarial Vetting Dossier' with three distinct layers of information for key topics: 'Layer 1 — Quick Response', 'Layer 2 — Detailed Explanation', and 'Layer 3 — Show me the evidence'.
 
-MULTI-LAYER ROUTING RULE:
-1. If the user asks for a quick response, short answer, summary, or a basic direct question (e.g., 'Why did he leave Zeta?', 'Has he owned P&L?'), deliver the text from **Layer 1 — Quick Response** for that specific topic.
-2. If the user asks for "details", "elaboration", "more depth", or an "explanation", deliver the text from **Layer 2 — Detailed Explanation** for that topic.
-3. If the user asks for "evidence", "metrics", "case studies", "proof", or "show me the evidence", deliver the text from **Layer 3 — Show me the evidence** for that topic.
+STRICT NARRATIVE EXSTRUCTION ROUTING MANDATES:
+1. IF ASKED ABOUT GAPS ('What are Kumaran's biggest gaps for this role?'):
+   Deliver this exact statement: 'Kumaran’s strongest experience sits at the intersection of payments, product/platform leadership and large-scale transformation. His potential gaps depend on the mandate. He should not be positioned as a career software-engineering leader, enterprise architect, or executive with long-term standalone P&L ownership. Similarly, where a role requires deep local-market knowledge, an existing work permit, or mandatory local-language fluency, these may be practical gaps rather than capability gaps. Where the requirement is adjacent rather than absent—for example engineering leadership, architecture decisions or commercial ownership—the distinction should be explored in interview rather than treated as a binary mismatch.'
+
+2. IF ASKED ABOUT HANDLING, LEADING, OR MANAGING ENGINEERING TEAMS:
+   You MUST explain his role as a matrix coordinator connecting definitions with execution nodes, rather than a line manager. By default, output this exact text verbatim:
+   'Kumaran has extensive experience leading engineering execution in a matrix environment, but should not be described as a career Head of Engineering. He has worked closely with engineering teams across product roadmaps, prioritisation, architecture dependencies, release planning, defects, production stability, non-functional requirements, SRE, testing and operational readiness. At Zeta, he coordinated Product, Engineering, Architecture, Quality, Operations, SRE, Risk/InfoSec and customer delivery branches to scale capabilities safely.'
+
+3. FOR GENERAL LAYER INTERACTION STRATEGY:
+   - If the user asks for a simple quick response or basic question on other topics, deliver the text from 'Layer 1 — Quick Response' for that specific topic verbatim.
+   - If the user explicitly asks for "details", "elaboration", "more depth", or an "explanation", deliver the text from 'Layer 2 — Detailed Explanation' for that topic verbatim.
+   - If the user explicitly asks for "evidence", "metrics", "case studies", or "show me the evidence", deliver the complete text blocks from 'Layer 3 — Show me the evidence' for that specific topic verbatim.
 
 *Formatting Rule: Do not print label prefixes like 'Layer 1' or 'Topic' to the screen. Simply present the core response text naturally and cleanly.*
 
@@ -118,7 +126,7 @@ def initialize_rag_pipeline(target_dir):
 
 # Warm up parameters cleanly using the flattened framework loop
 retriever = initialize_rag_pipeline(DATA_DIR)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2) # Set to 0.2 for natural conversational flow
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1) 
 
 # Initialize Session State arrays safely outside block grids
 if "messages" not in st.session_state:
@@ -154,42 +162,3 @@ with col1:
                 
                 st.markdown("---")
                 st.markdown("### 📊 Custom Alignment Report")
-                st.markdown(analysis_output)
-
-# --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
-with col2:
-    st.markdown("### 💬 Option B: General Recruiter Q&A")
-    st.write("Ask specific exploratory questions about Kumaran's leadership competencies, technical tools, or project frameworks.")
-    
-    chat_container = st.container(height=400)
-    
-    with chat_container:
-        for message in st.session_state.messages:
-            with st.chat_message(message["role"]):
-                st.markdown(message["content"])
-                
-    recruiter_query = st.chat_input("Ask about portfolio scales, tech stacks, or availability...")
-    
-    if recruiter_query:
-        # Append User Message and render instantly
-        st.session_state.messages.append({"role": "user", "content": recruiter_query})
-        with chat_container:
-            with st.chat_message("user"):
-                st.markdown(recruiter_query)
-        
-        # Build prompt templates cleanly
-        chat_prompt = ChatPromptTemplate.from_messages([
-            ("system", SYSTEM_CHAT_INSTRUCTION),
-            ("human", "{input}")
-        ])
-        
-        context_docs = format_docs(retriever.invoke(recruiter_query))
-        chat_chain = chat_prompt | llm | StrOutputParser()
-        
-        # Generate Answer and Append without calling st.rerun() loop breakers
-        with chat_container:
-            with st.chat_message("assistant"):
-                with st.spinner("Analyzing dossier..."):
-                    answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
-                    st.markdown(answer)
-                    
