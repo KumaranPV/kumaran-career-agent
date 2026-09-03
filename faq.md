@@ -201,3 +201,34 @@ Kumaran is an active zero-to-one product builder working at the intersection of 
   5. "How has building ACF changed the way you think about Product–Engineering collaboration?"
 
 Evidence used: `projects.md` — ACF product architecture, product evolution, governance model, and AI financial-orchestration records.
+
+
+---
+
+## Topic: Highest-Confidence Roles / Mandate Fit Scoring Matrix
+### Layer 1 — Quick Response
+Kumaran's profile matches highest-leverage utility positions at the intersection of complex systems, infrastructure transformation, and payments platform scale. His confidence scores list Head of Payments / Payment Products (95%), Payments Product Director (95%), Platform Transformation Director (94%), FS Technology Transformation Director (94%), and Head of Product – Payments (92%).
+
+### Layer 2 — Detailed Explanation
+When evaluating structural fit across senior executive mandates, the following scoring metrics map his profile alignment and boundary parameters:
+
+**Highest-Confidence Roles (Optimal Strategic Fit):**
+- **Head of Payments / Payment Products:** Score: **95%**
+- **Payments Product Director:** Score: **95%**
+- **Platform Transformation Director:** Score: **94%**
+- **FS Technology Transformation Director:** Score: **94%**
+- **Head of Product – Payments:** Score: **92%**
+
+**Context-Dependent Mandates (Requires Targeted Alignment):**
+- **GM Payments:** Score: **84%**
+  *Main Evaluation Question:* Depth of multi-year, standalone business-entity corporate P&L ownership.
+- **VP Engineering:** Score: **69%**
+  *Main Evaluation Question:* Strong cross-functional matrix engineering execution collaboration and delivery governance track, but should not be positioned as a career technical engineering line-executive.
+
+### Layer 3 — Show me the evidence
+The structural metrics across his career history defend these explicit scoring parameters:
+- **Product & Payments Velocity (92%-95% Fit Baseline):** Led extensive platform modernizations across cards, alternative networks, 3DS authentication protocols, tokenization infrastructures, and active zero-to-one product construction (ACF).
+- **Transformation Delivery (94% Fit Baseline):** Proven turnaround tracking including rescuing a stalled ~$100M core banking migration and stabilizing Zeta SaaS platform infrastructures protecting an approximately US$60M strategic pipeline opportunity.
+- **GM & VP Engineering Boundaries (69%-84% Fit Context):** Scaled Engineering Quality divisions up to 51 resources and managed ~$750K operational budgets. However, he structures architecture through a product outcome lens rather than personal low-level code compilation, and commercial tracking focuses on program portfolio values (~$15M) rather than standalone general manager business sheets.
+
+Evidence used: `experience.md` (Zeta Infrastructure Stabilization / Mauritian Bank Recovery Portfolio Logs) / `projects.md` (ACF Architecture Specs) / `bio.md` (Resume 2026 Mandate Baseline)
