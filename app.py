@@ -2,93 +2,25 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 
-# ==============================================================================
-# 1. CORE PAGE CONFIGURATION (MUST BE FIRST STREAMLIT DIRECTIVE)
-# ==============================================================================
+# Page configuration - Must be the first Streamlit command
 st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", layout="wide")
 
-# Load environment configurations
-load_dotenv()
-
-# ==============================================================================
-# 2. GLOBAL STORAGE: SYSTEM PROMPT BLOCKS
-# ==============================================================================
-SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
-Analyze the pasted Job Description against Kumaran's context dossier below.
-You must calculate and output an exact structured scorecard based strictly on the following guidelines:
-
-CRITICAL STRUCTURAL SECTIONS TO GENERATE:
-1. **Overall Fit Score**: Evaluate an explicit overall percentage (e.g., '91% — Strong Match') dynamically based on your analysis.
-2. **Full Matches**: Bullet points listing clear overlaps (e.g., Payments/issuer processing, Product & platform leadership, etc.).
-3. **Partial Matches**: Structural items needing slight verification (e.g., Full P&L ownership, specific local market experience, etc.).
-4. **Gaps / Risks**: Honest assessments (e.g., No current EU/US work rights if outside India, or specified limitations derived from the JD vs context).
-5. **Why the Score is X%**: Output a numerical breakdown mapping exactly to these categories:
-   - Domain fit — X/25
-   - Product leadership — X/25
-   - Technology/platform depth — X/20
-   - Commercial/P&L — X/15
-   - Geography/regulatory fit — X/10
-   - Work authorisation — X/10
-   - *Ensure the sum of these fields matches your total generated percentage perfectly.*
-6. **Recommendation**: Worth interviewing: YES/NO and a short 'Why' sentence stating if gaps are non-critical.
-7. **Recommended Interview Focus**: Provide 3-4 highly specific question bullet points to guide the hiring team during their first interview clip (e.g., Clarify depth of full P&L ownership, Validate architecture choice frameworks, etc.).
-
-Context Dossier:
-{context}"""
-
-SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
-Answer the user's question using the provided context dossier below.
-
-CRITICAL CONVERSATIONAL DIRECTION:
-- Maintain a polished, articulate, professional executive tone.
-- Your dossier contains a structured 'High-Stakes Adversarial Vetting Dossier' with three distinct layers of information for key topics: 'Layer 1 — Quick Response', 'Layer 2 — Detailed Explanation', and 'Layer 3 — Show me the evidence'.
-
-STRICT NARRATIVE EXSTRUCTION ROUTING MANDATES:
-1. IF ASKED ABOUT GAPS ('What are Kumaran's biggest gaps for this role?'):
-   Deliver this exact statement: 'Kumaran’s strongest experience sits at the intersection of payments, product/platform leadership and large-scale transformation. His potential gaps depend on the mandate. He should not be positioned as a career software-engineering leader, enterprise architect, or executive with long-term standalone P&L ownership. Similarly, where a role requires deep local-market knowledge, an existing work permit, or mandatory local-language fluency, these may be practical gaps rather than capability gaps. Where the requirement is adjacent rather than absent—for example engineering leadership, architecture decisions or commercial ownership—the distinction should be explored in interview rather than treated as a binary mismatch.'
-
-2. IF ASKED ABOUT HANDLING, LEADING, OR MANAGING ENGINEERING TEAMS:
-   You MUST explain his role as a matrix coordinator connecting definitions with execution nodes, rather than a line manager. By default, output this exact text verbatim:
-   'Kumaran has extensive experience leading engineering execution in a matrix environment, but should not be described as a career Head of Engineering. He has worked closely with engineering teams across product roadmaps, prioritisation, architecture dependencies, release planning, defects, production stability, non-functional requirements, SRE, testing and operational readiness. At Zeta, he coordinated Product, Engineering, Architecture, Quality, Operations, SRE, Risk/InfoSec and customer delivery branches to scale capabilities safely.'
-
-3. FOR GENERAL LAYER INTERACTION STRATEGY:
-   - If the user asks for a simple quick response or basic question on other topics, deliver the text from 'Layer 1 — Quick Response' for that specific topic verbatim.
-   - If the user explicitly asks for "details", "elaboration", "more depth", or an "explanation", deliver the text from 'Layer 2 — Detailed Explanation' for that topic verbatim.
-   - If the user explicitly asks for "evidence", "metrics", "case studies", or "show me the evidence", deliver the complete text blocks from 'Layer 3 — Show me the evidence' for that specific topic verbatim.
-
-*Formatting Rule: Do not print label prefixes like 'Layer 1' or 'Topic' to the screen. Simply present the core response text naturally and cleanly.*
-
-At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email (Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.
-
-Context Dossier:
-{context}"""
-
-# ==============================================================================
-# 3. INTERFACE HEADER RENDERING (PREMIUM RECRUITER EXPERIENCE)
-# ==============================================================================
-st.markdown("## 🔍 Should Kumaran be on your shortlist?")
+# Title and Header Layout
+st.title("💼 Kumaran Parvatham")
+st.subheader("AI Executive Talent Agent")
 st.write(
-    "I am an AI career dossier built specifically to help hiring managers, executive search panels, "
-    "and talent partners evaluate **Kumaran Parvatham** instantly against your specific leadership mandate."
+    "Welcome! I am Kumaran's autonomous career agent. You can ask me questions about his "
+    "24+ years of experience across Banking, Fintech, Payments, Enterprise Transformation, "
+    "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
 )
 
-st.markdown("### 🛠️ Use this ecosystem to:")
-c1, c2, c3 = st.columns(3)
-with c1:
-    st.info("**🎯 Option A: Assess against my job description**\n\nPaste your target JD below to generate a metric-backed fit scorecard.")
-with c2:
-    st.info("**📈 Option B: Understand his track record**\n\nUse *Option B* to explore payments, product, transformation, AI frameworks, or commercial outcomes.")
-with c3:
-    st.info("**⚡ Challenge the profile**\n\nUse *Option B* to stress-test his explicit gaps, organizational limits, and interview focus points.")
-
+# Load secrets
+load_dotenv()
 if not os.getenv("OPENAI_API_KEY"):
-    st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
+    st.error("Missing OpenAI API Key! Please verify your .env configuration file.")
     st.stop()
 
-# Set repository fallback directory cleanly
-DATA_DIR = "."
-if os.path.exists("/mount/src/kumaran-career-agent/bio.md"):
-    DATA_DIR = "/mount/src/kumaran-career-agent"
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
 
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
@@ -100,9 +32,6 @@ from langchain_core.output_parsers import StrOutputParser
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
-# ==============================================================================
-# 4. EXPLICIT DOSSIER PARSING (NO LOOP SYNTAX RISKS)
-# ==============================================================================
 @st.cache_resource
 def initialize_rag_pipeline(target_dir):
     all_loaded_docs = []
@@ -133,26 +62,115 @@ def initialize_rag_pipeline(target_dir):
 
 # Warm up parameters cleanly using the flattened framework loop
 retriever = initialize_rag_pipeline(DATA_DIR)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1) 
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
 
-# Initialize Session State arrays safely outside block grids
+SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
+Analyze the pasted Job Description against Kumaran's context dossier below.
+You must calculate and output an exact structured scorecard based strictly on the following guidelines:
+
+CRITICAL STRUCTURAL SECTIONS TO GENERATE:
+1. **Overall Fit Score**: Evaluate an explicit overall percentage (e.g., '91% — Strong Match') dynamically based on your analysis.
+2. **Full Matches**: Bullet points listing clear overlaps (e.g., Payments/issuer processing, Product & platform leadership, etc.).
+3. **Partial Matches**: Structural items needing slight verification (e.g., Full P&L ownership, specific local market experience, etc.).
+4. **Gaps / Risks**: Honest assessments (e.g., No current EU/US work rights if outside India, or specified limitations derived from the JD vs context).
+5. **Why the Score is X%**: Output a numerical breakdown mapping exactly to these categories:
+   - Domain fit — X/25
+   - Product leadership — X/25
+   - Technology/platform depth — X/20
+   - Commercial/P&L — X/15
+   - Geography/regulatory fit — X/10
+   - Work authorisation — X/10
+   - *Ensure the sum of these fields matches your total generated percentage perfectly.*
+6. **Recommendation**: Worth interviewing: YES/NO and a short 'Why' sentence stating if gaps are non-critical.
+7. **Recommended Interview Focus**: Provide 3-4 highly specific question bullet points to guide the hiring team during their first interview clip (e.g., Clarify depth of full P&L ownership, Validate architecture choice frameworks, etc.).
+
+Context Dossier:
+{context}"""
+
+SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
+Answer the user's question using ONLY the provided context dossier below.
+
+CRITICAL CONVERSATIONAL DIRECTION:
+- Maintain a polished, articulate, professional executive tone.
+- Your dossier contains a structured 'High-Stakes Adversarial Vetting Dossier' with three distinct layers of information for key topics: 'Layer 1 — Quick Response', 'Layer 2 — Detailed Explanation', and 'Layer 3 — Show me the evidence'.
+
+STRICT THREE-LAYER VETTING EXTRACTION RULES:
+- If a user asks a question, scan the 'High-Stakes Adversarial Vetting Dossier' inside your context.
+- By default, deliver the exact text under 'Layer 1 — Quick Response' for that specific topic verbatim.
+- If the user explicitly requests "details", "elaboration", "more depth", or an "explanation", deliver the exact text under 'Layer 2 — Detailed Explanation' for that topic verbatim.
+- If the user explicitly requests "evidence", "metrics", "case studies", or "show me the evidence", deliver the complete text blocks under 'Layer 3 — Show me the evidence' for that specific topic verbatim.
+
+*Formatting Rule: Do not print label prefixes like 'Layer 1' or 'Topic' to the screen. Simply present the core response text naturally and cleanly.*
+
+At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email (Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.
+
+Context Dossier:
+{context}"""
+
 if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "Welcome. I am Kumaran's executive talent agent. Ask me any question about his track record, leadership philosophy, domain gaps, or reasons to hire."}
-    ]
+    st.session_state.messages = []
 
-# ==============================================================================
-# 5. LINEAR WORKSPACE LAYOUT (ZERO NESTING TO GUARANTEE LIFTOFF)
-# ==============================================================================
-st.markdown("---")
+col1, col2 = st.columns(2, gap="large")
 
-# --- SECTION 1: THE INTERACTIVE JOB MATCHER (OPTION A) ---
-st.markdown("### 🎯 Option A: Match Your Job Description")
-st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
+# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
+with col1:
+    st.markdown("### 🎯 Option A: Match Your Job Description")
+    st.write("Paste your target JD below to get an instant, metric-backed gap analysis mapping Kumaran's career dossier directly to your requirements.")
+    
+    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience...")
+    
+    if st.button("Analyze Role Fit ⚡️"):
+        if jd_input.strip() == "":
+            st.warning("Please paste a valid job description text.")
+        else:
+            with st.spinner("Executing structural alignment matrix..."):
+                relevant_docs = retriever.invoke(jd_input)
+                context_dossier = format_docs(relevant_docs)
+                
+                match_prompt = ChatPromptTemplate.from_messages([
+                    ("system", SYSTEM_JOB_MATCHER_INSTRUCTION),
+                    ("human", "Analyze this job description and produce the explicit framework alignment output:\n{jd}")
+                ])
+                
+                matcher_chain = match_prompt | llm | StrOutputParser()
+                analysis_output = matcher_chain.invoke({"context": context_dossier, "jd": jd_input})
+                
+                st.markdown("---")
+                st.markdown("### 📊 Custom Alignment Report")
+                st.markdown(analysis_output)
 
-jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box_flat_final", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
-
-execute_match = st.button("Analyze Role Fit ⚡️")
-
-if execute_match and jd_input.strip() != "":
-    with st.spinner("Executing structural alignment matrix..."):
+# --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
+with col2:
+    st.markdown("### 💬 Option B: General Recruiter Q&A")
+    st.write("Ask specific exploratory questions about Kumaran's leadership competencies, technical tools, or project frameworks.")
+    
+    chat_container = st.container(height=350)
+    
+    with chat_container:
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+                
+    recruiter_query = st.chat_input("Ask about portfolio scales, tech stacks, or availability...")
+    
+    if recruiter_query:
+        st.session_state.messages.append({"role": "user", "content": recruiter_query})
+        with chat_container:
+            with st.chat_message("user"):
+                st.markdown(recruiter_query)
+        
+        chat_prompt = ChatPromptTemplate.from_messages([
+            ("system", SYSTEM_CHAT_INSTRUCTION),
+            ("human", "{input}")
+        ])
+        
+        context_docs = format_docs(retriever.invoke(recruiter_query))
+        chat_chain = chat_prompt | llm | StrOutputParser()
+        
+        with chat_container:
+            with st.chat_message("assistant"):
+                answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
+                st.markdown(answer)
+                
+        st.session_state.messages.append({"role": "assistant", "content": answer})
+        st.rerun()
