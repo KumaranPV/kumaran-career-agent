@@ -11,7 +11,7 @@ st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", la
 load_dotenv()
 
 # ==============================================================================
-# 2. GLOBAL STORAGE: SYSTEM PROMPT BLOCKS
+# 2. GLOBAL STORAGE: SYSTEM PROMPT CONSTANTS
 # ==============================================================================
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
 Analyze the pasted Job Description against Kumaran's context dossier below.
@@ -128,38 +128,39 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ==============================================================================
-# 5. FRONTEND TAB GRIDS (ELIMINATES COLUMN DISPLACEMENT ENTIRELY)
+# 5. UNIFIED WORKSPACE LAYOUT (100% VISIBILITY GUARANTEE)
 # ==============================================================================
-tab1, tab2 = st.tabs(["🎯 Option A: Match Your Job Description", "💬 Option B: 24/7 Executive Chat Console"])
+st.markdown("---")
 
-# --- TAB 1: THE INTERACTIVE JOB MATCHER ---
-with tab1:
-    st.markdown("### Match Your Open Job Specification")
-    st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
-    
-    jd_input = st.text_area("Paste Job Description here:", height=250, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience...")
-    
-    if st.button("Analyze Role Fit ⚡️"):
-        if jd_input.strip() == "":
-            st.warning("Please paste a valid job description text.")
-        else:
-            with st.spinner("Executing structural alignment matrix..."):
-                relevant_docs = retriever.invoke(jd_input)
-                context_dossier = format_docs(relevant_docs)
-                
-                match_prompt = ChatPromptTemplate.from_messages([
-                    ("system", SYSTEM_JOB_MATCHER_INSTRUCTION),
-                    ("human", "Analyze this job description and produce the explicit scorecard framework output:\n{jd}")
-                ])
-                
-                matcher_chain = match_prompt | llm | StrOutputParser()
-                analysis_output = matcher_chain.invoke({"context": context_dossier, "jd": jd_input})
-                
-                st.markdown("---")
-                st.markdown("### 📊 Custom Alignment Report")
-                st.markdown(analysis_output)
+# --- SECTION 1: THE INTERACTIVE JOB MATCHER ---
+st.markdown("### 🎯 Option A: Match Your Job Description")
+st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
 
-# --- TAB 2: THE 24/7 CHAT CONSOLE ---
-with tab2:
-    st.markdown("### General Recruiter Q&A Console")
+jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
+
+if st.button("Analyze Role Fit ⚡️"):
+    if jd_input.strip() == "":
+        st.warning("Please paste a valid job description text.")
+    else:
+        with st.spinner("Executing structural alignment matrix..."):
+            relevant_docs = retriever.invoke(jd_input)
+            context_dossier = format_docs(relevant_docs)
+            
+            match_prompt = ChatPromptTemplate.from_messages([
+                ("system", SYSTEM_JOB_MATCHER_INSTRUCTION),
+                ("human", "Analyze this job description and produce the explicit scorecard framework output:\\n{jd}")
+            ])
+            
+            matcher_chain = match_prompt | llm | StrOutputParser()
+            analysis_output = matcher_chain.invoke({"context": context_dossier, "jd": jd_input})
+            
+            st.markdown("---")
+            st.markdown("### 📊 Custom Alignment Report")
+            st.markdown(analysis_output)
+
+st.markdown("---")
+
+# --- SECTION 2: THE 24/7 CHAT CONSOLE ---
+st.markdown("### 💬 Option B: General Recruiter Q&A Console")
+st.write("Ask specific exploratory or adversarial questions about Kumaran's leadership competencies, technical tools, or project frameworks.")
 
