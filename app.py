@@ -27,12 +27,12 @@ Context Dossier:
 SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
 Answer the user's question using ONLY the provided context dossier below.
 
-CRITICAL CONVERSATIONAL DIRECTION:
+CRITICAL CONVERSATIONAL AND FORMATTING DIRECTION:
 - Maintain a polished, articulate, professional executive tone.
 - CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact thematic pillars maximum per answer to ensure punchiness.
 - PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on his Current AI initiatives (ACF + Financial Orchestration), Entrepreneurial venture (YiPay), and Enterprise Scale track (Zeta).
-- P&L / FINANCIAL OWNERSHIP DIRECTIVE: If a recruiter explicitly asks if Kumaran has handled a 'P&L', 'Profit and Loss', 'budget management', or has 'full P&L ownership', you MUST output this specific statement verbatim: 'Kumaran has significant commercial, portfolio, budget, pricing, vendor-economics and business-development exposure, but the dossier does not demonstrate long-term end-to-end ownership of a standalone business P&L comparable to a GM. This should be explored in an interview if full P&L accountability is essential.' Do not summarize or alter this message.
-- TECHNICAL ARCHITECT QUERY DIRECTIVE: If the user asks if Kumaran is or was a 'technical architect', 'enterprise architect', 'solution architect', or asks about his role choosing technology stacks, you MUST output this exact response layout: 'No. His experience is stronger at product/platform and transformation leadership, working closely with architecture and engineering teams. While he serves as the End-to-End Product Builder for the Agent Certification Framework (ACF) and the Principal Architect/Solo Builder for his AI Core Financial Orchestration concept—collaborating directly with LLMs to inform code and configuration choices based on functional requirements—he structures these architectures from a product outcome lens. He has influenced major core structural decisions and can confidently discuss trade-offs, Non-Functional Requirements (NFRs), and system operating implications, but he should not be positioned as a traditional career enterprise architect.'
+- IF ASKED ABOUT P&L OWNERSHIP OR BUDGETS: You MUST copy and output 'Template 2: P&L Ownership Queries' from the context dossier exactly, verbatim, word-for-word without any summarization.
+- IF ASKED IF HE IS A TECHNICAL ARCHITECT OR ENTERPRISE ARCHITECT: You MUST copy and output 'Template 1: Technical Architect Queries' from the context dossier exactly, verbatim, word-for-word without any alteration or summarization.
 - If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.
 - NEVER fabricate metrics, dates, or technical skills.
 
@@ -94,17 +94,21 @@ def initialize_rag_pipeline(target_dir):
     if os.path.exists(faq_f):
         all_loaded_docs.extend(TextLoader(faq_f, encoding="utf-8").load())
 
+    inst_f = os.path.join(target_dir, "instructions.md")
+    if os.path.exists(inst_f):
+        all_loaded_docs.extend(TextLoader(inst_f, encoding="utf-8").load())
+
     if not all_loaded_docs:
         st.error("Dossier Assets Missing from Repository Root Context.")
         st.stop()
 
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(all_loaded_docs, embeddings)
-    return vectorstore.as_retriever(search_kwargs={"k": 4})
+    return vectorstore.as_retriever(search_kwargs={"k": 5})
 
 # Warm up parameters cleanly using the flattened framework loop
 retriever = initialize_rag_pipeline(DATA_DIR)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0) # Temperature 0 forces strict text copy behavior
 
 # Initialize Session State arrays safely outside block grids
 if "messages" not in st.session_state:
@@ -174,3 +178,5 @@ with col2:
             with st.chat_message("assistant"):
                 answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
                 st.markdown(answer)
+        st.session_state.messages.append({"role": "assistant", "content": answer})
+        st.rerun()
