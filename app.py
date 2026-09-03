@@ -11,7 +11,7 @@ st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", la
 load_dotenv()
 
 # ==============================================================================
-# 2. GLOBAL STORAGE: SYSTEM PROMPT BLOCKS
+# 2. GLOBAL STORAGE: SYSTEM PROMPT BLOCKS (FLATTENED TO BYPASS SYNTAX ERROR)
 # ==============================================================================
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
 Analyze the pasted Job Description against Kumaran's context dossier below.
@@ -152,9 +152,9 @@ with tab1:
     
     jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box_tabbed", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
     
-    execute_match = st.button("Analyze Role Fit ⚡️")
+    execute_match = st.button("Analyze Role Fit 2.0 ⚡️")
     
     if execute_match and jd_input.strip() != "":
-        relevant_docs = retriever.invoke(jd_input)
-        context_dossier = format_docs(relevant_docs)
-        match_prompt = ChatPromptTemplate.from_messages([
+        context_docs = retriever.invoke(jd_input)
+        context_dossier = format_docs(context_docs)
+        
