@@ -15,11 +15,23 @@ load_dotenv()
 # ==============================================================================
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
 Analyze the pasted Job Description against Kumaran's context dossier below.
+You must calculate and output an exact structured scorecard based strictly on the following guidelines:
 
-Provide a structured, executive-level output with these precise sections:
-1. **Core Alignments**: Highlight specific metric-backed matches from his career (e.g., portfolio scale, 0-to-1 building, platform stabilization).
-2. **Competency Translation**: If the JD requests a skill not explicitly in his dossier, professionally translate how his broader expertise mitigates this gap.
-3. **Fit Summary & Call to Action**: A brief concluding sentence directing them to drop a line to Kumaran.alchemist@gmail.com.
+CRITICAL STRUCTURAL SECTIONS TO GENERATE:
+1. **Overall Fit Score**: Evaluate an explicit overall percentage (e.g., '91% — Strong Match') dynamically based on your analysis.
+2. **Full Matches**: Bullet points listing clear overlaps (e.g., Payments/issuer processing, Product & platform leadership, etc.).
+3. **Partial Matches**: Structural items needing slight verification (e.g., Full P&L ownership, specific local market experience, etc.).
+4. **Gaps / Risks**: Honest assessments (e.g., No current EU/US work rights if outside India, or specified limitations derived from the JD vs context).
+5. **Why the Score is X%**: Output a numerical breakdown mapping exactly to these categories:
+   - Domain fit — X/25
+   - Product leadership — X/25
+   - Technology/platform depth — X/20
+   - Commercial/P&L — X/15
+   - Geography/regulatory fit — X/10
+   - Work authorisation — X/10
+   - *Ensure the sum of these fields matches your total generated percentage perfectly.*
+6. **Recommendation**: Worth interviewing: YES/NO and a short 'Why' sentence stating if gaps are non-critical.
+7. **Recommended Interview Focus**: Provide 3-4 highly specific question bullet points to guide the hiring team during their first interview clip (e.g., Clarify depth of full P&L ownership, Validate architecture choice frameworks, etc.).
 
 Context Dossier:
 {context}"""
@@ -27,25 +39,19 @@ Context Dossier:
 SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
 Answer the user's question using ONLY the provided context dossier below.
 
-CRITICAL CONVERSATIONAL AND FORMATTING DIRECTION:
+CRITICAL CONVERSATIONAL & MULTI-LAYER ROUTING DIRECTION:
 - Maintain a polished, articulate, professional executive tone.
 - CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact thematic pillars maximum per answer to ensure punchiness.
-- PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on his Current AI initiatives (ACF + Financial Orchestration), Entrepreneurial venture (YiPay), and Enterprise Scale track (Zeta).
 
-STRICT RESPONSE EXTRACTION RULES (DO NOT OUTPUT THE HEADER LABELS LIKE 'Template X' OR THE QUESTION STRINGS):
-- IF ASKED ABOUT P&L OWNERSHIP OR BUDGETS: Extract and output ONLY the narrative text block under 'Template 2' from the context dossier verbatim.
-- IF ASKED IF HE IS A TECHNICAL ARCHITECT OR ENTERPRISE ARCHITECT: Extract and output ONLY the narrative text block under 'Template 1' from the context dossier verbatim.
-- IF ASKED ABOUT HIS GAPS OR LIMITATIONS: Extract and output ONLY the narrative text block under 'Template 3' from the context dossier verbatim.
-- IF ASKED IF HE IS A PRODUCT OR TRANSFORMATION LEADER: Extract and output ONLY the narrative text block under 'Template 4' from the context dossier verbatim.
-- IF ASKED HOW TECHNICAL HE IS OR WHAT HE PERSONALLY BUILT: Extract and output ONLY the narrative text block under 'Template 5' from the context dossier verbatim.
-- IF ASKED WHY HE LEFT ZETA: Extract and output ONLY the narrative text block under 'Template 6' from the context dossier verbatim.
-- IF ASKED IF HE WOULD WORK WELL IN A STARTUP: Extract and output ONLY the narrative text block under 'Template 7' from the context dossier verbatim.
-- IF ASKED ABOUT MANAGING ENGINEERING TEAMS: Extract and output ONLY the narrative text block under 'Template 8' from the context dossier verbatim.
-- IF ASKED FOR EVIDENCE OF THE $60M CLAIM: Extract and output ONLY the narrative text block under 'Template 9' from the context dossier verbatim.
-- IF ASKED WHY HE SHOULD BE HIRED OVER A TRADITIONAL PAYMENT LEADER: Extract and output ONLY the narrative text block under 'Template 10' from the context dossier verbatim.
+STRICT THREE-LAYER VETTING EXTRACTION RULES:
+- If a user asks any of your high-stakes vetting questions, look up the corresponding 'Topic' inside the context dossier.
+- LAYER 1 (QUICK RESPONSE): By default, if the user asks a standard, direct question (e.g., 'Why did he leave Zeta?', 'How technical is he?', etc.), extract and output ONLY the word-for-word text found directly inside **'Layer 1 — Quick Response'** for that topic.
+- LAYER 2 (DETAILED EXPLANATION): If the user's prompt explicitly asks for "details", "elaborate", "can you explain more", or "deep dive", you MUST extract and output the word-for-word text found inside **'Layer 2 — Detailed Explanation'** for that topic.
+- LAYER 3 (SHOW ME EVIDENCE): If the user's prompt explicitly asks for "evidence", "metrics", "case studies", "records", or uses the phrase "show me the evidence", you MUST extract and output the complete text blocks found inside **'Layer 3 — Show me the evidence'** for that topic.
 
+- NEVER output header labels like 'Layer 1' or 'Topic' to the screen. Speak the answer naturally.
 - If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.
-- NEVER fabricate metrics, dates, or technical skills.
+- NEVER fabricate metrics, dates, or technical skills outside the dossier context.
 
 At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email (Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.
 
@@ -105,17 +111,13 @@ def initialize_rag_pipeline(target_dir):
     if os.path.exists(faq_f):
         all_loaded_docs.extend(TextLoader(faq_f, encoding="utf-8").load())
 
-    inst_f = os.path.join(target_dir, "instructions.md")
-    if os.path.exists(inst_f):
-        all_loaded_docs.extend(TextLoader(inst_f, encoding="utf-8").load())
-
     if not all_loaded_docs:
         st.error("Dossier Assets Missing from Repository Root Context.")
         st.stop()
 
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(all_loaded_docs, embeddings)
-    return vectorstore.as_retriever(search_kwargs={"k": 10})
+    return vectorstore.as_retriever(search_kwargs={"k": 4})
 
 # Warm up parameters cleanly using the flattened framework loop
 retriever = initialize_rag_pipeline(DATA_DIR)
@@ -147,7 +149,7 @@ with col1:
                 
                 match_prompt = ChatPromptTemplate.from_messages([
                     ("system", SYSTEM_JOB_MATCHER_INSTRUCTION),
-                    ("human", "Analyze this job description and produce the explicit framework alignment output:\n{jd}")
+                    ("human", "Analyze this job description and produce the explicit scorecard framework output:\n{jd}")
                 ])
                 
                 matcher_chain = match_prompt | llm | StrOutputParser()
@@ -172,11 +174,13 @@ with col2:
     recruiter_query = st.chat_input("Ask about portfolio scales, tech stacks, or availability...")
     
     if recruiter_query:
+        # Append User Message and render instantly
+        st.session_state.messages.append({"role": "user", "content": recruiter_query})
         with chat_container:
             with st.chat_message("user"):
                 st.markdown(recruiter_query)
-        st.session_state.messages.append({"role": "user", "content": recruiter_query})
         
+        # Build prompt templates cleanly
         chat_prompt = ChatPromptTemplate.from_messages([
             ("system", SYSTEM_CHAT_INSTRUCTION),
             ("human", "{input}")
