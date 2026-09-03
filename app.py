@@ -37,21 +37,18 @@ Context Dossier:
 {context}"""
 
 SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
-Answer the user's question using ONLY the provided context dossier below.
+Answer the user's question using the provided context dossier below.
 
-CRITICAL CONVERSATIONAL & MULTI-LAYER ROUTING DIRECTION:
+CRITICAL CONVERSATIONAL DIRECTION:
 - Maintain a polished, articulate, professional executive tone.
-- CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact thematic pillars maximum per answer to ensure punchiness.
+- Your dossier contains a structured 'High-Stakes Adversarial Vetting Dossier' with three distinct layers of information for key topics: 'Layer 1 — Quick Response', 'Layer 2 — Detailed Explanation', and 'Layer 3 — Show me the evidence'.
 
-STRICT THREE-LAYER VETTING EXTRACTION RULES:
-- If a user asks any of your high-stakes vetting questions, look up the corresponding 'Topic' inside the context dossier.
-- LAYER 1 (QUICK RESPONSE): By default, if the user asks a standard, direct question (e.g., 'Why did he leave Zeta?', 'How technical is he?', etc.), extract and output ONLY the word-for-word text found directly inside **'Layer 1 — Quick Response'** for that topic.
-- LAYER 2 (DETAILED EXPLANATION): If the user's prompt explicitly asks for "details", "elaborate", "can you explain more", or "deep dive", you MUST extract and output the word-for-word text found inside **'Layer 2 — Detailed Explanation'** for that topic.
-- LAYER 3 (SHOW ME EVIDENCE): If the user's prompt explicitly asks for "evidence", "metrics", "case studies", "records", or uses the phrase "show me the evidence", you MUST extract and output the complete text blocks found inside **'Layer 3 — Show me the evidence'** for that topic.
+MULTI-LAYER ROUTING RULE:
+1. If the user asks for a quick response, short answer, summary, or a basic direct question (e.g., 'Why did he leave Zeta?', 'Has he owned P&L?'), deliver the text from **Layer 1 — Quick Response** for that specific topic.
+2. If the user asks for "details", "elaboration", "more depth", or an "explanation", deliver the text from **Layer 2 — Detailed Explanation** for that topic.
+3. If the user asks for "evidence", "metrics", "case studies", "proof", or "show me the evidence", deliver the text from **Layer 3 — Show me the evidence** for that topic.
 
-- NEVER output header labels like 'Layer 1' or 'Topic' to the screen. Speak the answer naturally.
-- If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.
-- NEVER fabricate metrics, dates, or technical skills outside the dossier context.
+*Formatting Rule: Do not print label prefixes like 'Layer 1' or 'Topic' to the screen. Simply present the core response text naturally and cleanly.*
 
 At the end of your response, seamlessly add a single-sentence soft closing text providing Kumaran's direct email (Kumaran.alchemist@gmail.com) and contact (+91 96000 57231) for scheduling an exploratory call.
 
@@ -121,7 +118,7 @@ def initialize_rag_pipeline(target_dir):
 
 # Warm up parameters cleanly using the flattened framework loop
 retriever = initialize_rag_pipeline(DATA_DIR)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0) # Temperature 0 forces strict text copy behavior
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2) # Set to 0.2 for natural conversational flow
 
 # Initialize Session State arrays safely outside block grids
 if "messages" not in st.session_state:
@@ -186,3 +183,13 @@ with col2:
             ("human", "{input}")
         ])
         
+        context_docs = format_docs(retriever.invoke(recruiter_query))
+        chat_chain = chat_prompt | llm | StrOutputParser()
+        
+        # Generate Answer and Append without calling st.rerun() loop breakers
+        with chat_container:
+            with st.chat_message("assistant"):
+                with st.spinner("Analyzing dossier..."):
+                    answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
+                    st.markdown(answer)
+                    
