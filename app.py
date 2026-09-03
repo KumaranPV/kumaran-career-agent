@@ -75,9 +75,13 @@ st.write(
 st.markdown("### 🛠️ Use this ecosystem to:")
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.info("**🎯 Option A: Assess against my job description** - Use the Job Matcher layout directly below.")
+    st.info("**🎯 Option A: Assess against my job description**\n\nPaste your target JD in *Option A* below to generate a metric-backed fit scorecard.")
 with c2:
-    st.info("**📈 Option B: Understand his track record & Challenge the profile** - Use the Chat Console terminal found further down the page.")
+    st.info("**📈 Option B: Understand his track record**\n\nUse *Option B* to explore payments, product, transformation, AI frameworks, or commercial outcomes.")
+with c3:
+    st.info("**⚡ Challenge the profile**\n\nUse *Option B* to stress-test his explicit gaps, organizational limits, and interview focus points.")
+
+st.markdown("<p style='text-align: center; font-weight: bold; color: #888;'>Or ask your own question below in the Option B terminal box.</p>", unsafe_allow_html=True)
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -140,21 +144,13 @@ if "messages" not in st.session_state:
     ]
 
 # ==============================================================================
-# 5. LINEAR WORKSPACE LAYOUT (ZERO NESTING TO GUARANTEE LIFTOFF)
+# 5. SIDE-BY-SIDE FIXED WORKSPACE MATRIX (ZERO COMPILER LOOPS)
 # ==============================================================================
-st.markdown("---")
+col1, col2 = st.columns(2, gap="large")
 
-# --- SECTION 1: THE INTERACTIVE JOB MATCHER (OPTION A) ---
-st.markdown("### 🎯 Option A: Match Your Job Description")
-st.write("Paste your target JD below to get an instant, metric-backed gap analysis scorecard mapping Kumaran's career dossier directly to your requirements.")
-
-jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box_flat_final", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
-
-execute_match = st.button("Analyze Role Fit ⚡️")
-
-if execute_match and jd_input.strip() != "":
-    with st.spinner("Executing structural alignment matrix..."):
-        relevant_docs = retriever.invoke(jd_input)
-        context_dossier = format_docs(relevant_docs)
-        
-        # Fixed: Converted to from_template to prevent list bracket errors entirely
+# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
+with col1:
+    st.markdown("### 🎯 Option A: Match Your Job Description")
+    st.write("Paste your target JD below to get an instant scorecard mapping Kumaran's career dossier directly to your requirements.")
+    
+    jd_input = st.text_area("Paste Job Description here:", height=250, key="jd_input_box_restored", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
