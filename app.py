@@ -31,8 +31,19 @@ CRITICAL CONVERSATIONAL AND FORMATTING DIRECTION:
 - Maintain a polished, articulate, professional executive tone.
 - CHRONOLOGICAL DENSITY CONTROL: Limit responses to exactly 2 or 3 high-impact thematic pillars maximum per answer to ensure punchiness.
 - PRODUCT LEADERSHIP ROLES REQUIREMENT: When asked about Product Leadership, Product Fit, or Innovation, you MUST explicitly anchor the response on his Current AI initiatives (ACF + Financial Orchestration), Entrepreneurial venture (YiPay), and Enterprise Scale track (Zeta).
-- IF ASKED ABOUT P&L OWNERSHIP OR BUDGETS: You MUST copy and output 'Template 2: P&L Ownership Queries' from the context dossier exactly, verbatim, word-for-word without any summarization.
-- IF ASKED IF HE IS A TECHNICAL ARCHITECT OR ENTERPRISE ARCHITECT: You MUST copy and output 'Template 1: Technical Architect Queries' from the context dossier exactly, verbatim, word-for-word without any alteration or summarization.
+
+STRICT RESPONSE EXTRACTION RULES (DO NOT OUTPUT THE HEADER LABELS LIKE 'Template X' OR THE QUESTION STRINGS):
+- IF ASKED ABOUT P&L OWNERSHIP OR BUDGETS: Extract and output ONLY the narrative text block under 'Template 2' from the context dossier verbatim.
+- IF ASKED IF HE IS A TECHNICAL ARCHITECT OR ENTERPRISE ARCHITECT: Extract and output ONLY the narrative text block under 'Template 1' from the context dossier verbatim.
+- IF ASKED ABOUT HIS GAPS OR LIMITATIONS: Extract and output ONLY the narrative text block under 'Template 3' from the context dossier verbatim.
+- IF ASKED IF HE IS A PRODUCT OR TRANSFORMATION LEADER: Extract and output ONLY the narrative text block under 'Template 4' from the context dossier verbatim.
+- IF ASKED HOW TECHNICAL HE IS OR WHAT HE PERSONALLY BUILT: Extract and output ONLY the narrative text block under 'Template 5' from the context dossier verbatim.
+- IF ASKED WHY HE LEFT ZETA: Extract and output ONLY the narrative text block under 'Template 6' from the context dossier verbatim.
+- IF ASKED IF HE WOULD WORK WELL IN A STARTUP: Extract and output ONLY the narrative text block under 'Template 7' from the context dossier verbatim.
+- IF ASKED ABOUT MANAGING ENGINEERING TEAMS: Extract and output ONLY the narrative text block under 'Template 8' from the context dossier verbatim.
+- IF ASKED FOR EVIDENCE OF THE $60M CLAIM: Extract and output ONLY the narrative text block under 'Template 9' from the context dossier verbatim.
+- IF ASKED WHY HE SHOULD BE HIRED OVER A TRADITIONAL PAYMENT LEADER: Extract and output ONLY the narrative text block under 'Template 10' from the context dossier verbatim.
+
 - If the user asks for a broad summary overview (e.g., 'Tell me about Kumaran'), preserve his exact structured 'Executive Persona' block verbatim.
 - NEVER fabricate metrics, dates, or technical skills.
 
@@ -171,12 +182,3 @@ with col2:
             ("human", "{input}")
         ])
         
-        context_docs = format_docs(retriever.invoke(recruiter_query))
-        chat_chain = chat_prompt | llm | StrOutputParser()
-        
-        with chat_container:
-            with st.chat_message("assistant"):
-                answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
-                st.markdown(answer)
-        st.session_state.messages.append({"role": "assistant", "content": answer})
-        st.rerun()
