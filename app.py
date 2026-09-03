@@ -11,7 +11,7 @@ st.set_page_config(page_title="Kumaran Parvatham AI Agent", page_icon="💼", la
 load_dotenv()
 
 # ==============================================================================
-# 2. GLOBAL STORAGE: SYSTEM PROMPT BLOCKS (FLATTENED TO BYPASS SYNTAX ERROR)
+# 2. GLOBAL STORAGE: SYSTEM PROMPT BLOCKS
 # ==============================================================================
 SYSTEM_JOB_MATCHER_INSTRUCTION = """You are the senior executive talent partner assessing Kumaran Parvatham against a pasted Job Description.
 Analyze the pasted Job Description against Kumaran's context dossier below.
@@ -75,11 +75,13 @@ st.write(
 st.markdown("### 🛠️ Use this ecosystem to:")
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.info("**🎯 Tab 1: Assess against my job description**\n\nPaste your target JD to generate a metric-backed fit scorecard.")
+    st.info("**🎯 Assess against my job description**\n\nPaste your target JD in *Option A* to generate a metric-backed fit scorecard.")
 with c2:
-    st.info("**📈 Tab 2: Understand his track record**\n\nExplore payments, product, transformation, AI frameworks, or commercial outcomes.")
+    st.info("**📈 Understand his track record**\n\nUse *Option B* to explore payments, product, transformation, AI frameworks, or commercial outcomes.")
 with c3:
-    st.info("**⚡ Tab 2: Challenge the profile**\n\nStress-test his explicit gaps, organizational limits, and interview focus points.")
+    st.info("**⚡ Challenge the profile**\n\nUse *Option B* to stress-test his explicit gaps, organizational limits, and interview focus points.")
+
+st.markdown("<p style='text-align: center; font-weight: bold; color: #888;'>Or ask your own question below in the Option B terminal box.</p>", unsafe_allow_html=True)
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -142,19 +144,14 @@ if "messages" not in st.session_state:
     ]
 
 # ==============================================================================
-# 5. FLAT INTERFACE WORKSPACE (TAB LAYOUT BYPASSES SUB-LEVEL CLASHES)
+# 5. FRONTEND WORKSPACE GRID DISPLAY (THE ORIGINAL WORKHORSE REDEPLOYED)
 # ==============================================================================
-tab1, tab2 = st.tabs(["🎯 Option A: Match Your Job Description", "💬 Option B: General Recruiter Q&A Console"])
+col1, col2 = st.columns(2, gap="large")
 
-# --- TAB 1: THE INTERACTIVE JOB MATCHER ---
-with tab1:
-    st.markdown("### Match Your Open Job Specification")
+# --- COLUMN 1: THE INTERACTIVE JOB MATCHER ---
+with col1:
+    st.markdown("### 🎯 Option A: Match Your Job Description")
+    st.write("Paste your target JD below to get an instant scorecard mapping Kumaran's career dossier directly to your requirements.")
     
-    jd_input = st.text_area("Paste Job Description here:", height=200, key="jd_input_box_tabbed", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
+    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box_restored", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
     
-    execute_match = st.button("Analyze Role Fit 2.0 ⚡️")
-    
-    if execute_match and jd_input.strip() != "":
-        context_docs = retriever.invoke(jd_input)
-        context_dossier = format_docs(context_docs)
-        
