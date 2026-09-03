@@ -72,7 +72,6 @@ st.write(
     "and talent partners evaluate **Kumaran Parvatham** instantly against your specific leadership mandate."
 )
 
-# Render three static, informative workspace navigation guides
 st.markdown("### 🛠️ Use this ecosystem to:")
 c1, c2, c3 = st.columns(3)
 with c1:
@@ -82,7 +81,7 @@ with c2:
 with c3:
     st.info("**⚡ Challenge the profile**\n\nUse *Option B* to stress-test his explicit gaps, organizational limits, and interview focus points.")
 
-st.markdown("<p style='text-align: center; font-weight: bold; color: #888;'>Or ask your own question below in the Option B terminal box.</p>", unsafe_allow_whitespace=True, unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-weight: bold; color: #888;'>Or ask your own question below in the Option B terminal box.</p>", unsafe_allow_html=True)
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -156,3 +155,6 @@ with col1:
     
     if st.button("Analyze Role Fit ⚡️"):
         if jd_input.strip() == "":
+            st.warning("Please paste a valid job description text.")
+        else:
+            with st.spinner("Executing structural alignment matrix..."):
