@@ -37,17 +37,24 @@ Context Dossier:
 {context}"""
 
 SYSTEM_CHAT_INSTRUCTION = """You are the autonomous, professional Executive Talent Agent for Kumaran Parvatham.
-Answer the user's question using ONLY the provided context dossier below.
+Answer the user's question using the provided context dossier below.
 
 CRITICAL CONVERSATIONAL DIRECTION:
 - Maintain a polished, articulate, professional executive tone.
 - Your dossier contains a structured 'High-Stakes Adversarial Vetting Dossier' with three distinct layers of information for key topics: 'Layer 1 — Quick Response', 'Layer 2 — Detailed Explanation', and 'Layer 3 — Show me the evidence'.
 
-STRICT THREE-LAYER VETTING EXTRACTION RULES:
-- If a user asks a question, scan the 'High-Stakes Adversarial Vetting Dossier' inside your context.
-- By default, deliver the exact text under 'Layer 1 — Quick Response' for that specific topic verbatim.
-- If the user explicitly requests "details", "elaboration", "more depth", or an "explanation", deliver the exact text under 'Layer 2 — Detailed Explanation' for that topic verbatim.
-- If the user explicitly requests "evidence", "metrics", "case studies", or "show me the evidence", deliver the complete text blocks under 'Layer 3 — Show me the evidence' for that specific topic verbatim.
+STRICT NARRATIVE EXSTRUCTION ROUTING MANDATES:
+1. IF ASKED ABOUT GAPS ('What are Kumaran's biggest gaps for this role?'):
+   Deliver this exact statement: 'Kumaran’s strongest experience sits at the intersection of payments, product/platform leadership and large-scale transformation. His potential gaps depend on the mandate. He should not be positioned as a career software-engineering leader, enterprise architect, or executive with long-term standalone P&L ownership. Similarly, where a role requires deep local-market knowledge, an existing work permit, or mandatory local-language fluency, these may be practical gaps rather than capability gaps. Where the requirement is adjacent rather than absent—for example engineering leadership, architecture decisions or commercial ownership—the distinction should be explored in interview rather than treated as a binary mismatch.'
+
+2. IF ASKED ABOUT HANDLING, LEADING, OR MANAGING ENGINEERING TEAMS:
+   You MUST explain his role as a matrix coordinator connecting definitions with execution nodes, rather than a line manager. By default, output this exact text verbatim:
+   'Kumaran has extensive experience leading engineering execution in a matrix environment, but should not be described as a career Head of Engineering. He has worked closely with engineering teams across product roadmaps, prioritisation, architecture dependencies, release planning, defects, production stability, non-functional requirements, SRE, testing and operational readiness. At Zeta, he coordinated Product, Engineering, Architecture, Quality, Operations, SRE, Risk/InfoSec and customer delivery branches to scale capabilities safely.'
+
+3. FOR GENERAL LAYER INTERACTION STRATEGY:
+   - If the user asks for a simple quick response or basic question on other topics, deliver the text from 'Layer 1 — Quick Response' for that specific topic verbatim.
+   - If the user explicitly asks for "details", "elaboration", "more depth", or an "explanation", deliver the text from 'Layer 2 — Detailed Explanation' for that topic verbatim.
+   - If the user explicitly asks for "evidence", "metrics", "case studies", or "show me the evidence", deliver the complete text blocks from 'Layer 3 — Show me the evidence' for that specific topic verbatim.
 
 *Formatting Rule: Do not print label prefixes like 'Layer 1' or 'Topic' to the screen. Simply present the core response text naturally and cleanly.*
 
@@ -57,15 +64,25 @@ Context Dossier:
 {context}"""
 
 # ==============================================================================
-# 3. INTERFACE HEADER RENDERING
+# 3. INTERFACE HEADER RENDERING (PREMIUM RECRUITER EXPERIENCE)
 # ==============================================================================
-st.title("💼 Kumaran Parvatham")
-st.subheader("AI Executive Talent Agent")
+st.markdown("## 🔍 Should Kumaran be on your shortlist?")
 st.write(
-    "Welcome! I am Kumaran's autonomous career agent. You can ask me questions about his "
-    "24+ years of experience across Banking, Fintech, Payments, Enterprise Transformation, "
-    "or use the **Job Matcher** tool to evaluate his fit for your open role instantly."
+    "I am an AI career dossier built specifically to help hiring managers, executive search panels, "
+    "and talent partners evaluate **Kumaran Parvatham** instantly against your specific leadership mandate."
 )
+
+# Render three static, informative workspace navigation guides
+st.markdown("### 🛠️ Use this ecosystem to:")
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.info("**🎯 Assess against my job description**\n\nPaste your target JD in *Option A* below to generate a metric-backed fit scorecard.")
+with c2:
+    st.info("**📈 Understand his track record**\n\nUse *Option B* to explore payments, product, transformation, AI frameworks, or commercial outcomes.")
+with c3:
+    st.info("**⚡ Challenge the profile**\n\nUse *Option B* to stress-test his explicit gaps, organizational limits, and interview focus points.")
+
+st.markdown("<p style='text-align: center; font-weight: bold; color: #888;'>Or ask your own question below in the Option B terminal box.</p>", unsafe_allow_whitespace=True, unsafe_allow_html=True)
 
 if not os.getenv("OPENAI_API_KEY"):
     st.error("Missing OpenAI API Key! Please verify your Streamlit Cloud Secrets settings.")
@@ -126,7 +143,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ==============================================================================
-# 5. FRONTEND WORKSPACE GRID DISPLAY (ORIGINAL SIDE-BY-SIDE RENDER)
+# 5. FRONTEND WORKSPACE GRID DISPLAY
 # ==============================================================================
 col1, col2 = st.columns(2, gap="large")
 
@@ -135,62 +152,7 @@ with col1:
     st.markdown("### 🎯 Option A: Match Your Job Description")
     st.write("Paste your target JD below to get an instant, metric-backed gap analysis mapping Kumaran's career dossier directly to your requirements.")
     
-    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience...")
+    jd_input = st.text_area("Paste Job Description here:", height=300, key="jd_input_box", placeholder="Looking for a Product/Transformation Executive with experience in banking core systems, scaling platforms, card-management system migrations...")
     
     if st.button("Analyze Role Fit ⚡️"):
         if jd_input.strip() == "":
-            st.warning("Please paste a valid job description text.")
-        else:
-            with st.spinner("Executing structural alignment matrix..."):
-                relevant_docs = retriever.invoke(jd_input)
-                context_dossier = format_docs(relevant_docs)
-                
-                match_prompt = ChatPromptTemplate.from_messages([
-                    ("system", SYSTEM_JOB_MATCHER_INSTRUCTION),
-                    ("human", "Analyze this job description and produce the explicit scorecard framework output:\n{jd}")
-                ])
-                
-                matcher_chain = match_prompt | llm | StrOutputParser()
-                analysis_output = matcher_chain.invoke({"context": context_dossier, "jd": jd_input})
-                
-                st.markdown("---")
-                st.markdown("### 📊 Custom Alignment Report")
-                st.markdown(analysis_output)
-
-# --- COLUMN 2: THE 24/7 CHAT CONSOLE ---
-with col2:
-    st.markdown("### 💬 Option B: General Recruiter Q&A")
-    st.write("Ask specific exploratory questions about Kumaran's leadership competencies, technical tools, or project frameworks.")
-    
-    chat_container = st.container(height=350)
-    
-    with chat_container:
-        for message in st.session_state.messages:
-            with st.chat_message(message["role"]):
-                st.markdown(message["content"])
-                
-    recruiter_query = st.chat_input("Ask about portfolio scales, tech stacks, or availability...")
-    
-    if recruiter_query:
-        # Append User Message and render instantly
-        st.session_state.messages.append({"role": "user", "content": recruiter_query})
-        with chat_container:
-            with st.chat_message("user"):
-                st.markdown(recruiter_query)
-        
-        # Build prompt templates cleanly
-        chat_prompt = ChatPromptTemplate.from_messages([
-            ("system", SYSTEM_CHAT_INSTRUCTION),
-            ("human", "{input}")
-        ])
-        
-        context_docs = format_docs(retriever.invoke(recruiter_query))
-        chat_chain = chat_prompt | llm | StrOutputParser()
-        
-        # Generate Answer and Append cleanly
-        with chat_container:
-            with st.chat_message("assistant"):
-                answer = chat_chain.invoke({"context": context_docs, "input": recruiter_query})
-                st.markdown(answer)
-                
-        st.session_state.messages.append({"role": "assistant", "content": answer})
