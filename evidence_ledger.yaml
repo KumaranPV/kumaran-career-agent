@@ -1,0 +1,219 @@
+- id: LEAD-SERVANT-001
+  claim: Kumaran's stated leadership style is servant leadership with strong outcome
+    accountability.
+  ownership: self-described leadership philosophy
+  source:
+    file: bio_v2.md
+    section: Leadership Philosophy
+  confidence: high
+- id: BIO-EXIT-001
+  claim: Kumaran left Zeta in July 2026 following organisational redundancy.
+  ownership: career fact
+  source:
+    file: faq_v2.md
+    section: Why did he leave Zeta?
+  confidence: high
+- id: BIO-MOBILITY-001
+  claim: Kumaran is based in India, open to global relocation, and requires work authorisation/sponsorship
+    where applicable.
+  ownership: career fact
+  source:
+    file: bio_v2.md
+    section: Current Profile
+  confidence: high
+- id: EXP-ZETA-PLATFORM-001
+  claim: Enabled/protected an approximately US$60M strategic platform migration opportunity.
+  company: Zeta
+  period: 2020-2026
+  ownership: led customer/platform execution, readiness, governance and cross-functional
+    alignment
+  metrics:
+    opportunity_value_usd_approx: 60000000
+    active_scale: 1M+
+    potential_card_scale: ~20M
+  source:
+    file: experience_v2.md
+    section: Zeta / Platform transformation
+  confidence: high
+  approved_wording:
+  - Enabled/protected an approximately US$60M strategic platform migration opportunity.
+  prohibited_wording:
+  - Generated US$60M revenue
+  - Closed a US$60M deal
+  - Owned a US$60M P&L
+- id: EXP-ZETA-CS-001
+  claim: Built Customer Success from 3 to 35.
+  company: Zeta
+  ownership: led organisation build and scale
+  source:
+    file: experience_v2.md
+    section: Zeta / Organisation building
+  confidence: high
+- id: EXP-ZETA-QA-001
+  claim: Scaled Enterprise Quality from 7 to 51.
+  company: Zeta
+  ownership: led organisation build and scale
+  source:
+    file: experience_v2.md
+    section: Zeta / Organisation building
+  confidence: high
+- id: EXP-ZETA-TACCO-001
+  claim: Built TACCO from 3 to 20.
+  company: Zeta
+  ownership: led organisation build and scale
+  source:
+    file: experience_v2.md
+    section: Zeta / Organisation building
+  confidence: high
+- id: EXP-ZETA-PREDICT-001
+  claim: Improved delivery predictability to approximately 85%.
+  company: Zeta
+  ownership: led governance and operating-model improvements
+  source:
+    file: experience_v2.md
+    section: Zeta / Delivery and operational outcomes
+  confidence: high
+- id: EXP-ZETA-OPS-001
+  claim: Reduced production incidents by 50%, MTTR from approximately 10 to 3 days,
+    and improved CSAT from 2.5 to 3.75.
+  company: Zeta
+  ownership: led delivery/service operating improvements
+  source:
+    file: experience_v2.md
+    section: Zeta / Delivery and operational outcomes
+  confidence: high
+- id: EXP-ZETA-3DS-001
+  claim: Led 3DS/ACS execution across Visa, Mastercard and Amex; improved authentication
+    success by approximately 5–7% and reduced implementation time from approximately
+    8 weeks to approximately 2.5 weeks.
+  company: Zeta
+  ownership: led execution and readiness across product/network/customer teams
+  source:
+    file: experience_v2.md
+    section: Zeta / Authentication / network execution
+  confidence: high
+- id: EXP-ZETA-PORTFOLIO-001
+  claim: Governed an approximately US$15M banking/fintech portfolio.
+  company: Zeta
+  ownership: portfolio governance
+  source:
+    file: experience_v2.md
+    section: Zeta / Commercial / budget exposure
+  confidence: high
+- id: EXP-ZETA-BUDGET-001
+  claim: Managed approximately US$750K headcount budget exposure.
+  company: Zeta
+  ownership: budget responsibility
+  source:
+    file: experience_v2.md
+    section: Zeta / Commercial / budget exposure
+  confidence: medium
+- id: EXP-ZETA-SAVINGS-001
+  claim: Delivered approximately US$140K+ annualised scheme/vendor savings.
+  company: Zeta
+  ownership: commercial/vendor optimisation
+  source:
+    file: experience_v2.md
+    section: Zeta / Commercial / budget exposure
+  confidence: high
+- id: EXP-ZETA-ARCH-001
+  claim: Identified/challenged a clearing/coupon workflow control weakness and advocated
+    stronger dependency controls and recovery mechanisms.
+  company: Zeta
+  ownership: influenced/challenged architecture and operating controls
+  source:
+    file: experience_v2.md
+    section: Zeta / Technical / architecture involvement
+  confidence: medium
+  prohibited_wording:
+  - Designed the entire architecture
+  - Was the system architect
+- id: EXP-QUATTRO-COMM-001
+  claim: Built an approximately US$7.5M international payments pipeline and converted
+    approximately US$1M into realised revenue.
+  company: Quatrro / SwinkPay
+  ownership: led business development / proposition / client engagement
+  source:
+    file: experience_v2.md
+    section: Quatrro / Commercial growth
+  confidence: high
+- id: EXP-QUATTRO-PRODUCT-001
+  claim: Developed and commercialised SwinkPay and expanded multi-currency prepaid,
+    clearing and settlement capabilities.
+  company: Quatrro / SwinkPay
+  ownership: product/proposition leadership
+  source:
+    file: experience_v2.md
+    section: Quatrro / Product / ecosystem development
+  confidence: high
+- id: EXP-QUATTRO-MARKET-001
+  claim: Secured Mastercard Third Party Processor certification and established a
+    US processing footprint.
+  company: Quatrro / SwinkPay
+  ownership: led/coordination across market-entry dependencies
+  source:
+    file: experience_v2.md
+    section: Quatrro / Market entry
+  confidence: high
+- id: EXP-YIPAY-001
+  claim: Co-created an interoperable account-to-account payments venture; led MVP
+    definition, routing logic, bank demonstrations and commercial validation; provisional
+    patent application filed.
+  company: YiPay
+  ownership: founder/co-creator/product lead
+  source:
+    file: experience_v2.md
+    section: YiPay
+  confidence: high
+- id: EXP-EARLY-RECOVERY-001
+  claim: Recovered and enabled execution of an approximately US$100M VisionPLUS-to-SmartVista
+    transformation for a leading Mauritian bank.
+  ownership: programme recovery / delivery leadership
+  source:
+    file: experience_v2.md
+    section: Earlier Leadership / Programme recovery
+  confidence: high
+- id: EXP-EARLY-MALAYSIA-001
+  claim: Established a 20+ member Malaysia capability supporting an approximately
+    US$100M accounting transformation.
+  ownership: capability build / transition leadership
+  source:
+    file: experience_v2.md
+    section: Earlier Leadership / Regional capability building
+  confidence: high
+- id: PROJ-ACF-001
+  claim: Conceived and developed ACF from problem definition into a working multi-tenant
+    AI-governance web product.
+  ownership: product creator/product owner/zero-to-one builder
+  source:
+    file: projects_v2.md
+    section: Project 1 — ACF
+  confidence: high
+- id: PROJ-ACF-002
+  claim: Owned ACF product thesis, requirements, governance model, workflows, prioritisation,
+    testing direction, deployment decisions and roadmap evolution.
+  ownership: direct product ownership
+  source:
+    file: projects_v2.md
+    section: Project 1 — ACF / Direct ownership
+  confidence: high
+- id: PROJ-ACF-003
+  claim: Used modern LLMs as strategic co-builders while retaining human ownership
+    of product judgement, governance, prioritisation and deployment decisions.
+  ownership: product-building method
+  source:
+    file: projects_v2.md
+    section: Project 1 — ACF / LLM co-builder model
+  confidence: high
+- id: PROJ-FINORCH-001
+  claim: Developing a product concept and architecture/operating-model design for
+    AI-enabled financial orchestration across liquidity, FX, payment-rail selection,
+    reconciliation and controls.
+  ownership: product concept owner/solution shaper
+  source:
+    file: projects_v2.md
+    section: Project 2 — AI Core Financial Orchestration Platform
+  confidence: medium
+  prohibited_wording:
+  - Fully deployed production platform
+  - Production-grade orchestration engine
