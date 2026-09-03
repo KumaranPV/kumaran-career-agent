@@ -115,7 +115,7 @@ def initialize_rag_pipeline(target_dir):
 
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     vectorstore = FAISS.from_documents(all_loaded_docs, embeddings)
-    return vectorstore.as_retriever(search_kwargs={"k": 5})
+    return vectorstore.as_retriever(search_kwargs={"k": 10})
 
 # Warm up parameters cleanly using the flattened framework loop
 retriever = initialize_rag_pipeline(DATA_DIR)
