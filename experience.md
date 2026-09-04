@@ -1,5 +1,33 @@
+---
+document_type: career_evidence
+retrieval_priority: evidence_support
+broad_profile_primary_source: false
+retrieval_instruction: Use this file to substantiate capability, scale, outcomes and transferability. Do not use it alone to construct the default 'Tell me about Kumaran' response; use bio_v4.md first.
+---
+
 # Experience & Evidence — Kumaran Parvatham
-## V3: Capability-First, Domain-Second
+## V4: Capability-First, Domain-Second
+
+## Retrieval Guidance
+
+For broad identity questions such as **“Tell me about Kumaran”**, **“Who is Kumaran?”**, or **“What roles does he fit?”**, this file is a supporting evidence source.
+
+The primary response should come from `bio_v4.md`, and evidence from this file should then be used to substantiate the answer.
+
+Do **not** infer that Kumaran is payments-only because many large quantified achievements happened in payments or banking environments.
+
+For each experience record, separate:
+
+1. **Executive capability**
+2. **Domain context**
+3. **Transferability**
+4. **Boundary / limitation**
+
+The key test is:
+
+> **Has Kumaran solved this class of executive problem before, even if the industry context differs?**
+
+---
 
 This dossier separates **executive capability** from **industry context** so experience can be assessed for transferability across domains.
 
