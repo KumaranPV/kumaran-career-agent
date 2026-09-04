@@ -1,25 +1,130 @@
-# Hiring Manager FAQ — V3
+---
+document_type: hiring_manager_faq
+retrieval_priority: high_for_questions_and_challenge_mode
+retrieval_aliases:
+  - tell me about Kumaran
+  - best fit roles
+  - role families
+  - can Kumaran work outside payments
+  - why hire Kumaran
+  - where would you place Kumaran
+---
+
+# Hiring Manager FAQ — V4
 ## Cross-Domain Executive Assessment
 
-## Global Principle
+# BROAD-QUERY RESPONSE CONTRACT
 
-Kumaran should be evaluated as a **Product, Platform & Transformation Executive with deep payments / financial-services expertise**, not as a payments-only candidate.
+When asked a broad identity question, do **not** answer with career history alone.
 
-For every role, distinguish:
-1. **Functional fit** — can he perform the executive mandate?
-2. **Domain fit** — how much direct subject-matter depth does he have?
-3. **Transferability** — how much of the mandate relies on proven executive capabilities that transfer across industries?
-4. **Practical fit** — geography, language, work authorisation and other constraints.
+Broad questions include:
+- Tell me about Kumaran
+- Who is Kumaran?
+- What kind of executive is he?
+- What roles does he fit?
+- Where would you place him?
+- What is his profile?
 
-Every substantive answer should use evidence and expose material limitations.
+The response should contain, in this order:
 
-# 1. Give me a 30-second summary of Kumaran
+1. **Executive identity**
+2. **Best-fit role families**
+3. **Where his fit is strongest / problems he solves**
+4. **Differentiation**
+5. **Domain flexibility**
+6. **Current product-building focus**
+7. **Leadership style**
 
-Kumaran Parvatham is a Product, Platform & Transformation Executive with 24+ years of experience leading complex technology-enabled businesses, products, programmes and operating-model change.
+Do not lead with “payments executive.”
 
-His core strengths are in turning ambiguous business problems into product/platform direction, aligning technology and operating models around them, and taking those initiatives through execution, adoption and scale.
+Use:
 
-He has especially deep experience in banking, fintech and payments, but the underlying capabilities — product strategy, platform transformation, organisation building, commercial execution and enterprise change — are transferable across technology-led and regulated industries.
+> **Product, Platform & Transformation Executive with deep expertise in banking, fintech and payments.**
+
+Payments is a domain advantage, not the organising principle of the whole profile.
+
+---
+
+# 1. Tell me about Kumaran
+
+Kumaran Parvatham is a **Product, Platform & Transformation Executive** with 24+ years of experience leading complex technology-enabled businesses, products, platforms, programmes and operating-model change.
+
+His strongest capabilities are in turning ambiguous business problems into clear product and platform direction, aligning Product, Engineering, Operations and commercial stakeholders around that direction, and taking initiatives through execution, adoption and scale.
+
+His deepest domain expertise is in **banking, fintech and payments**, but his executive skills are highly transferable across technology-led and regulated industries.
+
+## Best-Fit Roles
+
+### Product & Platform
+- Head / VP / Director — Product
+- Head / Director — Product & Platforms
+- Product Strategy Director
+- Platform Product / Platform Transformation Director
+
+### Transformation & Strategy
+- Enterprise Transformation Director
+- Digital Transformation Director
+- Strategy & Transformation Director
+- Business Transformation Director
+
+### Product + Technology Execution
+- Product Engineering & Delivery Director
+- Technology Transformation Director
+- Platform Execution / Modernisation Director
+
+### Consulting / Practice
+- Consulting Director
+- Technology / Transformation Practice Director
+- Client Solutions / Transformation Leader
+
+### Domain-Advantaged
+- Head / VP / Director — Payments
+- Head of Payment Products
+- Payments Product Director
+- Cards / Issuing / Financial Services Technology leadership
+
+### Context-Dependent
+- GM / Business Unit leadership — validate full standalone P&L depth where central
+- VP Engineering / CTO-style mandates — selective; not a career software-engineering executive
+
+## Where His Fit Is Strongest
+
+He is particularly relevant when an organisation needs to:
+- scale a product or platform
+- modernise legacy technology
+- recover a complex transformation
+- align Product, Engineering, Operations and business stakeholders
+- build or restructure teams
+- improve execution predictability
+- create operating models and governance
+- take products from concept through adoption
+- enter new markets
+- improve customer, operational and commercial outcomes
+
+## What Differentiates Him
+
+His leadership pattern connects:
+
+> **Strategy → Product → Technology → Transformation → Adoption → Operating Scale → Commercial Outcome**
+
+## Domain Flexibility
+
+Payments and financial services are his strongest subject-matter domains, but they demonstrate experience in complex, regulated and high-reliability environments rather than restricting him to those sectors.
+
+For a new domain, assess:
+> **How much of the mandate depends on specialist domain knowledge versus transferable executive capability?**
+
+Where product, platform, transformation and leadership capability matter more, his transferability is high.
+
+## Current Focus
+
+Kumaran is currently building **ACF — Agent Certification Framework**, a zero-to-one enterprise AI-governance product, reinforcing his current product-building credentials.
+
+His leadership style is **servant leadership with strong outcome accountability**.
+
+**Evidence used:** `bio_v4.md`, `experience_v4.md`, relevant evidence-ledger records.
+
+---
 
 # 2. Is Kumaran a payments executive?
 
