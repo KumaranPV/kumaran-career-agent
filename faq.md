@@ -1,301 +1,402 @@
-# Hiring Manager FAQ — V2
+# Hiring Manager FAQ — V3
+## Cross-Domain Executive Assessment
 
-## Global behaviour
-Use `system_rules.md`.
-Every answer should end with **Evidence used:**.
+## Global Principle
 
----
+Kumaran should be evaluated as a **Product, Platform & Transformation Executive with deep payments / financial-services expertise**, not as a payments-only candidate.
 
-## 1. What are Kumaran's biggest gaps for this role?
+For every role, distinguish:
+1. **Functional fit** — can he perform the executive mandate?
+2. **Domain fit** — how much direct subject-matter depth does he have?
+3. **Transferability** — how much of the mandate relies on proven executive capabilities that transfer across industries?
+4. **Practical fit** — geography, language, work authorisation and other constraints.
 
-### Layer 1 — Quick Response
-Kumaran's strongest experience sits at the intersection of payments, product/platform leadership and large-scale transformation. His gaps depend on the mandate and should be separated into true gaps, adjacent experience and practical constraints.
+Every substantive answer should use evidence and expose material limitations.
 
-### Layer 2 — Detailed
-Potential gaps include:
-- no evidence of sustained multi-year standalone business-unit P&L ownership comparable to a GM
-- not a career software-engineering leader
-- not a career enterprise architect
-- local-market / local-language requirements where explicitly mandatory
-- work-authorisation requirements in markets where he does not already hold rights
+# 1. Give me a 30-second summary of Kumaran
 
-Adjacent areas such as engineering leadership, architecture decisions and commercial ownership should be explored in interview rather than treated as binary mismatches.
+Kumaran Parvatham is a Product, Platform & Transformation Executive with 24+ years of experience leading complex technology-enabled businesses, products, programmes and operating-model change.
 
-### Layer 3 — Evidence
-- `EXP-ZETA-PORTFOLIO-001`
-- `EXP-ZETA-BUDGET-001`
-- `EXP-ZETA-ARCH-001`
-- `BIO-MOBILITY-001`
+His core strengths are in turning ambiguous business problems into product/platform direction, aligning technology and operating models around them, and taking those initiatives through execution, adoption and scale.
 
----
+He has especially deep experience in banking, fintech and payments, but the underlying capabilities — product strategy, platform transformation, organisation building, commercial execution and enterprise change — are transferable across technology-led and regulated industries.
 
-## 2. Is he really a product leader or primarily a transformation leader?
+# 2. Is Kumaran a payments executive?
 
-### Layer 1
+Not exclusively.
+
+Payments is his deepest specialist domain and provides strong evidence of operating in complex, regulated, high-reliability environments.
+
+His broader executive identity is:
+> **Product, Platform & Transformation Executive**
+
+Payments should be treated as a domain accelerator, not a boundary around his career.
+
+# 3. Can Kumaran succeed outside payments?
+
+Yes, particularly where the executive mandate is driven by product, platform, transformation, operating-model or technology execution rather than highly specialised domain knowledge.
+
+Many of his strongest achievements are domain-independent:
+- building organisations
+- recovering complex transformations
+- improving delivery predictability
+- scaling operating capabilities
+- connecting product and engineering
+- managing customer outcomes
+- managing commercial / portfolio outcomes
+- taking products from concept to deployment
+
+His earlier career also includes healthcare, logistics and enterprise technology engagements.
+
+The key question is:
+> **How much of this role depends on domain-specific expertise versus transferable executive capability?**
+
+Where domain knowledge can be learned and the core challenge is executive leadership, transferability is high.
+
+# 4. What skills are most transferable across industries?
+
+### Very high transferability
+- product strategy
+- platform leadership
+- operating-model design
+- enterprise transformation
+- organisation building
+- programme recovery
+- product / engineering alignment
+- customer adoption
+- governance
+- commercial strategy
+- vendor management
+- leadership
+- zero-to-one product building
+
+### Moderately domain-dependent
+- regulatory execution
+- risk / control frameworks
+- enterprise architecture governance
+- platform migration
+
+### Domain-specific
+- ISO 8583
+- 3DS / ACS
+- MDES / VTS
+- issuer processing
+- clearing / settlement
+- card economics
+
+# 5. What kinds of non-payments roles should I consider him for?
+
+Strongly relevant role families include:
+- Head / VP / Director — Product
+- Head / Director — Product & Platforms
+- Product Strategy Director
+- Enterprise Transformation Director
+- Digital Transformation Director
+- Strategy & Transformation Director
+- Product Engineering & Delivery Director
+- Technology Transformation Director
+- Platform Transformation Director
+- Business Transformation Director
+- Technology Consulting / Practice Director
+- GM / business-unit roles combining product, operations and transformation
+
+The final fit depends on how much domain-specific knowledge the role requires.
+
+# 6. Is he really a product leader or primarily a transformation leader?
+
 Kumaran is best described as a **product and platform executive with unusually strong transformation execution capability**.
 
-### Layer 2
-His product evidence includes proposition development, customer discovery, issuer-processing platforms, authentication, tokenisation, roadmap shaping, product-engineering prioritisation, platform migration and zero-to-one product building.
+His product experience includes proposition development, customer discovery, product/platform strategy, product-engineering prioritisation, issuer-processing platforms, authentication, tokenisation, platform migration and zero-to-one product building.
 
-His transformation advantage is that he frequently operates beyond roadmap ownership into adoption, operational readiness, customer outcomes, governance and organisational change.
+His transformation advantage is that he frequently operates beyond roadmap ownership into adoption, operational readiness, customer outcomes, governance, organisation change and production stability.
 
-### Layer 3 — Evidence
-- `EXP-ZETA-PLATFORM-001`
-- `EXP-ZETA-3DS-001`
-- `EXP-QUATTRO-PRODUCT-001`
-- `EXP-YIPAY-001`
-- `PROJ-ACF-001`
+That combination is highly transferable across industries.
 
----
+# 7. Why should I hire him for a non-payments product role?
 
-## 3. How technical is he?
+Because the executive challenge may be more important than the domain label.
 
-### Layer 1
+Kumaran has repeatedly operated across:
+
+**Customer problem → Product proposition → Requirements → Technology trade-offs → Launch → Adoption → Operating model → Scale → Commercial outcome**
+
+Those capabilities are relevant to many technology-led product organisations.
+
+The hiring question should be:
+> **Does this role require deep industry-specific knowledge on day one, or does it require an executive who can lead complex products and platforms?**
+
+If the latter, his transferability is high.
+
+# 8. What are Kumaran's biggest gaps for this role?
+
+This must be assessed against the specific JD.
+
+Potential gap categories include:
+- deep local domain expertise if the domain itself is essential
+- sustained standalone GM-level P&L ownership
+- career software-engineering leadership
+- career enterprise architecture ownership
+- local-language requirements
+- work-authorisation constraints
+
+Do not automatically label engineering or architecture as gaps unless the JD actually requires them.
+
+# 9. How technical is Kumaran?
+
 Kumaran has strong technology and architecture fluency, but should not be positioned as a career software engineer or enterprise architect.
 
-### Layer 2
-He is comfortable engaging on APIs, microservices, event-driven systems, NFRs, resilience, security, authentication, tokenisation, clearing/settlement, production incidents and operational readiness.
+He is comfortable engaging on APIs, microservices, event-driven systems, NFRs, resilience, security, authentication, tokenisation, clearing/settlement, production incidents, SRE and operational readiness.
 
-His value is understanding architecture deeply enough to challenge assumptions and connect technical choices to customer/business outcomes.
+His value is understanding architecture deeply enough to challenge assumptions and connect technology decisions to business, customer and operating outcomes.
 
-### Layer 3 — Evidence
-- `EXP-ZETA-ARCH-001`
-- `EXP-ZETA-3DS-001`
-- `PROJ-ACF-001`
+# 10. What has Kumaran personally built?
 
----
+He has built products, product capabilities and organisations.
 
-## 4. What has he personally built?
+### Products
+- ACF — zero-to-one AI-governance product
+- YiPay — account-to-account payments venture / MVP
 
-### Layer 1
-Kumaran has built products, product capabilities and operating organisations.
+### Organisations
+- Customer Success: 3 → 35
+- Enterprise Quality: 7 → 51
+- TACCO: 3 → 20
 
-### Layer 2
-Examples:
-- ACF: zero-to-one AI-governance product
-- YiPay: account-to-account payments venture / MVP
-- Customer Success: 3→35
-- Enterprise Quality: 7→51
-- TACCO: 3→20
+These demonstrate both product-building and organisational-building capability.
 
-### Layer 3 — Evidence
-- `PROJ-ACF-001`
-- `EXP-YIPAY-001`
-- `EXP-ZETA-CS-001`
-- `EXP-ZETA-QA-001`
-- `EXP-ZETA-TACCO-001`
+# 11. Is his AI experience product-building or experimentation?
 
----
+ACF is product-building.
 
-## 5. Has he owned P&L?
+It moved from problem thesis into a working multi-tenant product with assessment workflows, governance, configurable decisioning, SSO, decision history, automated testing and deployment.
 
-### Layer 1
+The financial-orchestration work is currently better described as **product concept and operating-model / architecture design**, not as an equivalent production build.
+
+# 12. What is his leadership style?
+
+Kumaran describes his leadership style as:
+> **Servant leadership with strong outcome accountability**
+
+His model is:
+**Clarity → Empowerment → Support → Accountability → Learning**
+
+He creates clarity, removes blockers, builds leadership layers, delegates decision-making appropriately and remains accountable for outcomes.
+
+This is not consensus-only leadership. He becomes more directive when customer, regulatory, operational or strategic risk requires it.
+
+# 13. What evidence supports servant leadership?
+
+Evidence includes:
+- Customer Success built 3 → 35
+- Enterprise Quality scaled 7 → 51
+- TACCO built 3 → 20
+- roles, competencies, KRAs and operating mechanisms defined
+- delivery predictability improved to ~85%
+- incidents reduced 50%
+- MTTR reduced ~10 → 3 days
+- CSAT improved 2.5 → 3.75
+
+The strongest interpretation is that Kumaran tends to improve the system around teams — clarity, capability, decision rights and operating mechanisms — rather than relying on individual heroics.
+
+# 14. How would his servant-leadership style work in Product + Engineering?
+
+Kumaran would typically:
+- align teams around the customer / business outcome
+- clarify priorities and decision rights
+- let Product, Engineering and Architecture make appropriate decisions within those boundaries
+- remove organisational blockers
+- avoid micromanaging implementation
+- establish measurable outcomes
+- intervene more directly when risk or strategic commitments require it
+
+# 15. Would he work well in a startup or scale-up?
+
+Yes, especially in a scale-up or regulated technology company where the challenge is moving from ambiguity to repeatable product and operating discipline.
+
+Evidence includes Zeta, Quatrro, Verinite, YiPay and ACF.
+
+He is less naturally positioned for a five-person engineering startup seeking a hands-on CTO or principal coder.
+
+# 16. What kinds of cultures fit him best?
+
+Strong fit:
+- empowerment with accountability
+- cross-functional collaboration
+- outcome orientation
+- product / engineering partnership
+- high-change environments
+- regulated or operationally complex businesses
+- organisations building repeatable capability
+
+Potentially weaker fit:
+- highly command-and-control cultures
+- environments where seniority substitutes for distributed ownership
+- narrowly maintenance-oriented roles with little scope for product or operating improvement
+
+# 17. Where could Kumaran underperform?
+
+Potential mismatch areas:
+- pure coding / software-engineering leadership
+- roles requiring career-level architecture ownership
+- positions where full standalone P&L ownership is the core criterion
+- roles dependent on local-language fluency he does not have
+- roles where highly specialised domain expertise is the primary qualification and cannot reasonably be learned
+
+Avoid saying he needs a “transformation role” to perform. He can fit product roles independently.
+
+# 18. Has he owned P&L?
+
 Kumaran has significant commercial, budget and business-performance responsibility, but the dossier does not establish sustained end-to-end ownership of a standalone business-unit P&L comparable to a GM.
 
-### Layer 2
-Relevant evidence includes:
+Evidence includes:
 - ~US$15M portfolio governance
 - ~US$750K headcount budget
 - ~US$7.5M commercial pipeline
 - ~US$1M realised revenue
-- ~US$140K+ annualised scheme/vendor savings
+- ~US$140K+ annualised savings
 
-For roles requiring proven full P&L ownership, treat this as a partial match.
+For roles requiring proven full P&L ownership, this is a partial match.
 
-### Layer 3 — Evidence
-- `EXP-ZETA-PORTFOLIO-001`
-- `EXP-ZETA-BUDGET-001`
-- `EXP-ZETA-SAVINGS-001`
-- `EXP-QUATTRO-COMM-001`
+# 19. What is his engineering-management experience?
 
----
-
-## 6. Why did he leave Zeta?
-
-### Layer 1
-Kumaran left Zeta in July 2026 following organisational redundancy. The dossier does not indicate a performance-related exit.
-
-### Layer 2
-Following Zeta, he returned to zero-to-one product building through ACF and related work in AI governance, agentic payments and financial infrastructure.
-
-### Layer 3 — Evidence
-- `BIO-EXIT-001`
-- `PROJ-ACF-001`
-
----
-
-## 7. Would he work well in a startup?
-
-### Layer 1
-Yes, particularly in a scale-up or regulated fintech where the challenge is moving from ambiguity to repeatable product and operating discipline.
-
-### Layer 2
-His evidence includes Zeta, Quatrro, Verinite, YiPay and ACF. He has repeatedly built structures that did not previously exist.
-
-He is less naturally positioned for a five-person engineering startup seeking a hands-on CTO or principal coder.
-
-### Layer 3 — Evidence
-- `EXP-ZETA-CS-001`
-- `EXP-ZETA-QA-001`
-- `EXP-YIPAY-001`
-- `PROJ-ACF-001`
-
----
-
-## 8. What is his experience managing engineering?
-
-### Layer 1
 Kumaran has extensive experience leading engineering execution in matrix environments, but should not be described as a career Head of Engineering.
 
-### Layer 2
-He has led across prioritisation, architecture dependencies, release readiness, NFRs, defects, production stability, SRE, testing and operational readiness.
+He has led across prioritisation, release readiness, architecture dependencies, NFRs, quality, SRE, production stability and operational readiness.
 
 His strongest positioning is:
 > **Product/platform executive + technology delivery leader + engineering partner**
 
-### Layer 3 — Evidence
-- `EXP-ZETA-QA-001`
-- `EXP-ZETA-ARCH-001`
-- `EXP-ZETA-PREDICT-001`
+# 20. What evidence supports the US$60M claim?
 
----
-
-## 9. What evidence supports the US$60M claim?
-
-### Layer 1
-The approximately US$60M figure refers to a strategic platform migration opportunity that Kumaran's work helped enable/protect; it is not US$60M of revenue personally generated by him.
-
-### Layer 2
-The underlying work involved platform stabilisation, functional-equivalence readiness, more than 1M active accounts/cards, potential scale toward approximately 20M cards and the migration/adoption path.
+The approximately US$60M figure refers to a strategic platform migration opportunity Kumaran's work helped enable/protect.
 
 Approved wording:
 > **Enabled/protected an approximately US$60M strategic platform migration opportunity.**
 
-### Layer 3 — Evidence
-- `EXP-ZETA-PLATFORM-001`
+Do not say:
+- generated US$60M revenue
+- closed a US$60M deal
+- owned a US$60M P&L
 
----
+# 21. What direct evidence exists for MDES / VTS?
 
-## 10. Why should I hire him over a traditional payments product leader?
+The dossier establishes direct product/domain implementation experience with Mastercard MDES and Visa VTS tokenisation frameworks.
 
-### Layer 1
-Kumaran's differentiation is what happens after the roadmap is agreed.
+This should not be interpreted as evidence that Kumaran personally coded tokenisation infrastructure.
 
-### Layer 2
-He connects:
-**Customer problem → Product proposition → Requirements → Engineering/Architecture trade-offs → Certification → Launch → Migration → Production stability → Adoption → Operating model → Commercial outcome**
+The appropriate positioning is:
+> **Direct product/domain implementation experience with MDES and VTS.**
 
-His advantage is:
+# 22. What did Kumaran personally own in architecture decisions?
+
+In enterprise roles, Kumaran typically identified/challenged architecture and operating risks, translated business and customer needs into technical requirements, participated in trade-off discussions, and influenced controls and readiness decisions.
+
+The dossier does not establish that he was the career system architect.
+
+For ACF, his ownership is stronger on product problem, requirements, workflow, governance, prioritisation, acceptance and deployment decisions.
+
+# 23. Why did he leave Zeta?
+
+Kumaran left Zeta in July 2026 following organisational redundancy.
+
+The dossier does not indicate a performance-related exit.
+
+Following Zeta, he returned to zero-to-one product building through ACF and related AI / financial-infrastructure work.
+
+# 24. Why should I hire him over a traditional payments Product Director?
+
+If the role is payments-specific, Kumaran’s differentiation is what happens after the roadmap is agreed.
+
+He combines:
 **Product + Payments + Technology + Transformation + Adoption + Commercial outcomes**
 
-### Layer 3 — Evidence
-- `EXP-ZETA-PLATFORM-001`
-- `EXP-ZETA-3DS-001`
-- `EXP-QUATTRO-PRODUCT-001`
-- `PROJ-ACF-001`
+# 25. Why should I hire him over a traditional cross-domain Product Director?
 
----
+Kumaran’s differentiation is breadth of execution.
 
-## 11. What is Kumaran's leadership style?
+He combines:
+**Strategy + Product + Platforms + Technology Execution + Transformation + Organisation Building + Commercial Outcomes**
 
-### Layer 1
-Kumaran describes his leadership style as **servant leadership with strong outcome accountability**.
+He has repeatedly worked in environments where the product itself was not enough; the organisation also needed operating structures, governance, technology alignment, customer adoption, production stability and measurable execution.
 
-### Layer 2
-He creates clarity, removes blockers, develops leaders, empowers teams and remains accountable for outcomes.
+# 26. Would you shortlist Kumaran for a role outside financial services?
 
-His model:
-**Clarity → Empowerment → Support → Accountability → Learning**
+Potentially yes.
 
-This is not consensus-only leadership. He becomes more directive where customer, regulatory, operational or strategic risk requires it.
+The agent should separately assess:
+- **Functional Fit**
+- **Domain Fit**
+- **Transferability**
+- **Practical Fit**
 
-### Layer 3 — Evidence
-- `LEAD-SERVANT-001`
-- `EXP-ZETA-CS-001`
-- `EXP-ZETA-QA-001`
-- `EXP-ZETA-TACCO-001`
-- `EXP-ZETA-OPS-001`
+For example:
+- Functional fit: 90%
+- Domain fit: 65%
+- Transferability: High
 
----
+may still justify an interview if domain knowledge is learnable.
 
-## 12. What kind of culture does he work best in?
+# 27. What should I validate before hiring him into a new domain?
 
-### Quick Response
-Cultures that value empowerment, accountability, cross-functional collaboration, measurable outcomes and the ability to build operating structure around complex products.
+1. How much domain knowledge is required on day one?
+2. Which outcomes depend on transferable executive capability versus specialist knowledge?
+3. How quickly can he acquire the domain vocabulary, economics and regulatory context?
+4. Does the organisation want a domain SME or an executive problem-solver?
+5. Are there local-market or practical constraints?
 
-### Evidence
-- `LEAD-SERVANT-001`
-- `EXP-ZETA-PREDICT-001`
+# 28. What role would you hire him for?
 
----
-
-## 13. Where would he struggle?
-
-### Quick Response
-He is likely to be less naturally aligned with highly command-and-control cultures, pure coding leadership roles, highly local-language-dependent mandates, or roles where long-term standalone P&L ownership is the dominant selection criterion.
-
-### Evidence
-- `LEAD-SERVANT-001`
-- `EXP-ZETA-ARCH-001`
-- `EXP-ZETA-PORTFOLIO-001`
-
----
-
-## 14. Is his AI experience product-building or experimentation?
-
-### Layer 1
-ACF is product-building, not only experimentation. The financial-orchestration work is currently better described as product concept and architecture/operating-model design.
-
-### Layer 2
-ACF has moved from thesis to working multi-tenant product and production deployment. The financial orchestration platform should not yet be represented as an equivalent production build without additional evidence.
-
-### Layer 3 — Evidence
-- `PROJ-ACF-001`
-- `PROJ-FINORCH-001`
-
----
-
-## 15. How much of the technical work did he personally own?
-
-### Quick Response
-He owned the product problem, requirements, governance, workflow, prioritisation and acceptance decisions on ACF, while using modern AI tools as co-builders. In enterprise roles he generally influenced/challenged architecture and engineering rather than acting as the career system architect.
-
-### Evidence
-- `PROJ-ACF-002`
-- `EXP-ZETA-ARCH-001`
-
----
-
-## 16. What role would you hire him for?
-
-### Highest-confidence
-- Head / VP / Director — Payments
-- Head / Director — Payment Products
-- Payments Product Director
+## Cross-domain
+- Head / VP / Director — Product
 - Head / Director — Product & Platforms
+- Enterprise Transformation Director
+- Strategy & Transformation Director
+- Product Engineering & Delivery Director
+- Technology Transformation Director
 - Platform Transformation Director
-- FS Technology Transformation Director
-- Payments / FS Consulting Director
+- Consulting / Practice Director
 
-### Context-dependent
-- GM Payments — test full P&L depth
-- VP Engineering — not a career engineering leader
+## Domain-specialist
+- Head / VP / Director — Payments
+- Head of Payment Products
+- Payments Product Director
+- Cards / Issuing leadership
+- Financial Services Technology Director
 
-### Evidence
-- `bio_v2.md`
-- `evidence_ledger.yaml`
+## Context-dependent
+- GM / Business Unit — validate full P&L depth
+- VP Engineering — not a career engineering executive
 
----
+# 29. How should JD fit be scored?
 
-## 17. What should I validate in interview before hiring him?
+Do not create one opaque score only.
 
-Recommended validation areas:
-1. Depth of direct product ownership for the specific mandate.
-2. Scope of full P&L accountability if required.
-3. Degree of architecture ownership vs influence.
-4. Local-market / regulatory context if the mandate is geography-specific.
-5. Work-authorisation feasibility.
-6. Leadership fit with the company's operating culture.
+Return:
+### Functional Fit
+How well do proven capabilities match the mandate?
 
-Evidence used:
-`system_rules.md`, `evidence_ledger.yaml`
+### Domain Fit
+How much direct industry / subject-matter experience exists?
+
+### Transferability
+High / Medium / Low
+
+### Practical Fit
+Work authorisation, language, location and other constraints.
+
+### Overall Fit
+A weighted score where weights are explicitly shown and sum to 100.
+
+For a role where domain expertise is only 15% of success, lack of direct domain experience should not dominate the result.
+
+For a role where domain expertise is 50% of success, it should.
+
+# 30. What is the governing principle for assessing Kumaran?
+
+Do not ask only:
+> **“Has he worked in this industry?”**
+
+Also ask:
+> **“Has he solved this class of executive problem before?”**
+
+That is the central transferability test.
